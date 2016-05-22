@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Tasks</h1>
-
+<h1>課題一覧</h1>
+<%= render 'search_form' %>
 <table>
   <thead>
     <tr>
@@ -12,6 +12,7 @@
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
+        <td><%= task.task_title %></td>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -21,5 +22,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Task', new_task_path %>
+<% #if current_user.role_id == 1 %>
+  <%= link_to 'New Task', new_task_path %>
+<% #end %>

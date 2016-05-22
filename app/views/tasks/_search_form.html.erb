@@ -1,0 +1,27 @@
+<form method="GET" action="/tasks" class="form-horizontal">
+  <div class="search-form margin-bottom-10">
+    <div class="row">
+
+      <div class="col-lg-11 padding-bottom-10">
+        <label class="col-lg-2 control-label">課題種別</label>
+        <div class="col-lg-3">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <%= select_tag 'task_category_id', options_for_select(task_categories_options.map{|a| [a.task_category_title, a.id]}, params[:task_category_id]), :class => 'category form-control' %>
+          </div>
+        </div>
+        <label class="col-lg-2 control-label">課題タイトル</label>
+        <div class="col-lg-3 paddong-0">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <%= text_field_tag :task_title, params[:task_title], :class => 'title form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-1">
+        <button class="btn btn-block btn-primary"><i class="fa fa-search"></i>検索</button>
+      </div>
+    </div>
+  </div>
+</form>
