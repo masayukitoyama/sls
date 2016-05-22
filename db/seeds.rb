@@ -1,7 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# 開発用テストデータ
+if Rails.env == 'development'
+  load(Rails.root.join( 'db', 'seeds', 'task_categories_seeder.rb'))
+  load(Rails.root.join( 'db', 'seeds', 'tasks_seeder.rb'))
+end
+load(Rails.root.join( 'db', 'seeds', 'roles_seeder.rb'))
