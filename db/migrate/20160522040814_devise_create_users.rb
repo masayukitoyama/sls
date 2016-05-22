@@ -6,9 +6,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :encrypted_password, null: false, default: ""
 
       ## Original datas
-      t.integer :role_id, null: false, default: 0
+      t.integer :role_id, null: false, default: 1
       t.string  :user_name, null: false
-      t.integer :job_type, null: false, default: 0
+      t.integer :job_type
+      t.integer :belonging_id
       t.text    :user_memo
 
 
