@@ -1,27 +1,80 @@
-<p id="notice"><%= notice %></p>
+<section class="content-header">
+  <h1>課題一覧</h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">課題一覧</li>
+  </ol>
+</section>
+<section class="content task-list">
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
 
-<h1>課題一覧</h1>
-<%= render 'search_form' %>
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <div class="info-box-content">
+        <span class="info-box-text">課題数</span>
+        <span class="info-box-number"><%= @tasks.length %><small>問</small></span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
 
-  <tbody>
-    <% @tasks.each do |task| %>
+      <div class="info-box-content">
+        <span class="info-box-text">Likes</span>
+        <span class="info-box-number">41,410</span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">Sales</span>
+        <span class="info-box-number">760</span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">New Members</span>
+        <span class="info-box-number">2,000</span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <%= render 'search_form' %>
+  <table>
+    <thead>
       <tr>
-        <td><%= task.task_title %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-<% #if current_user.role_id == 1 %>
-  <%= link_to 'New Task', new_task_path %>
-<% #end %>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td><%= task.task_title %></td>
+          <td><%= link_to 'Show', task %></td>
+          <td><%= link_to 'Edit', edit_task_path(task) %></td>
+          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+
+  <br>
+  <% #if current_user.role_id == 1 %>
+    <%= link_to 'New Task', new_task_path %>
+  <% #end %>

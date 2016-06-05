@@ -11,7 +11,14 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require bootstrap.js
 //= require bootstrap.min.js
+//= require material.js
+//= require material.min.js
+//= require ripples.js
+//= require ripples.min.js
+//= require mdb.js
+//= require chartjs/Chart.js
+//= require slimScroll/jquery.slimscroll.js
+//= require sparkline/jquery.sparkline.js
 //= require_tree .
+$.material.init()
