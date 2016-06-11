@@ -1,0 +1,28 @@
+/* 共通 */
+.margin-right-5 {
+  margin-bottom: 5px !important;
+}
+.margin-bottom-10 {
+  margin-bottom: 10px !important;
+}
+.form-control {
+  height: 40px;
+}
+
+
+/* 課題一覧 */
+.topix-list {
+  background: #fff;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #f3f3f3;
+}
+.search-form {
+  background: #f9f9f9;
+  padding: 1px;
+  border-radius: 3px;
+  border: 1px solid #f3f3f3;
+}
+.search-form .control-label {
+  padding-left: 0;
+}

@@ -4,7 +4,8 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = Task.get_all_tasks
+    @task_menu = MENU_ACTIVE
   end
 
   # GET /tasks/1

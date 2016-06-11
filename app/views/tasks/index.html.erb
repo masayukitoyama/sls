@@ -5,73 +5,96 @@
     <li class="active">課題一覧</li>
   </ol>
 </section>
-<section class="content task-list">
-  <div class="col-md-3 col-sm-6 col-xs-12">
-    <div class="info-box">
-      <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="topix-list margin-bottom-10">
+        <div class="row">
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">課題数</span>
+                <span class="info-box-number"><big><%= @tasks.length %></big><small>問</small></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-red"><i class="fa fa-flag-o"></i></span>
 
-      <div class="info-box-content">
-        <span class="info-box-text">課題数</span>
-        <span class="info-box-number"><%= @tasks.length %><small>問</small></span>
+              <div class="info-box-content">
+                <span class="info-box-text">現在の課題</span>
+                <span class="info-box-number"><%= @tasks[0].task_title %></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-green"><i class="fa fa-line-chart"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">全体の進捗率</span>
+                <span class="info-box-number">90<small>%</small></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">New Members</span>
+                <span class="info-box-number">2,000</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+        </div>
       </div>
-      <!-- /.info-box-content -->
-    </div>
-  </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
-    <div class="info-box">
-      <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+      <div class="box">
+        <div class="box-body">
+        <%= render 'search_form' %>
+        <% if @tasks.present? %>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>タイトル</th>
+                <th>期限</th>
+                <th>完了者</th>
+                <th>全体進捗</th>
+              </tr>
+            </thead>
 
-      <div class="info-box-content">
-        <span class="info-box-text">Likes</span>
-        <span class="info-box-number">41,410</span>
-      </div>
-      <!-- /.info-box-content -->
-    </div>
-    <!-- /.info-box -->
-  </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
-    <div class="info-box">
-      <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-
-      <div class="info-box-content">
-        <span class="info-box-text">Sales</span>
-        <span class="info-box-number">760</span>
-      </div>
-      <!-- /.info-box-content -->
-    </div>
-    <!-- /.info-box -->
-  </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
-    <div class="info-box">
-      <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
-
-      <div class="info-box-content">
-        <span class="info-box-text">New Members</span>
-        <span class="info-box-number">2,000</span>
-      </div>
-      <!-- /.info-box-content -->
-    </div>
-    <!-- /.info-box -->
-  </div>
-  <%= render 'search_form' %>
-  <table>
-    <thead>
-      <tr>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @tasks.each do |task| %>
-        <tr>
-          <td><%= task.task_title %></td>
-          <td><%= link_to 'Show', task %></td>
-          <td><%= link_to 'Edit', edit_task_path(task) %></td>
-          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+            <tbody>
+              <% @tasks.each_with_index do |task, index| %>
+                <tr class="task_list cursor-pointer" data-task-id="<%= task.id %>">
+                  <td><%= index + 1 %></td>
+                  <td><%= task.task_title %></td>
+                  <td>2016/10/30</td>
+                  <td>100名</td>
+                  <td><span class="badge bg-green">90%</span></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <% else %>
+        <div class="col-sm-12 search_empty_msg">
+          <p> <%= t('errors.messages.search_empty') %></p>
+        </div>
       <% end %>
-    </tbody>
-  </table>
+    </div>
+  </div>
+</div>
 </section>
 
   <br>

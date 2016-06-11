@@ -1238,6 +1238,8 @@ a:focus {
   border-radius: 0;
   box-shadow: none;
   border-color: #d2d6de;
+  font-size: 12px !important;
+  padding: 6px !important;
 }
 .form-control:focus {
   border-color: #3c8dbc;
@@ -2226,7 +2228,7 @@ a:focus {
   background-color: #e7e7e7;
 }
 .btn-primary {
-  background-color: #3c8dbc;
+  background-color: #fff;
   border-color: #367fa9;
 }
 .btn-primary:hover,
@@ -2237,20 +2239,24 @@ a:focus {
 .btn-success {
   background-color: #00a65a;
   border-color: #008d4c;
+  color: #fff !important;
 }
 .btn-success:hover,
 .btn-success:active,
 .btn-success.hover {
   background-color: #008d4c;
+  color: #00a65a !important;
 }
 .btn-info {
   background-color: #00c0ef;
   border-color: #00acd6;
+  color: #fff !important;
 }
 .btn-info:hover,
 .btn-info:active,
 .btn-info.hover {
   background-color: #00acd6;
+  color: #00c0ef !important;
 }
 .btn-danger {
   background-color: #dd4b39;
@@ -3230,6 +3236,8 @@ table.text-center th {
   padding: 20px;
   border-top: 0;
   color: #666;
+  overflow: hidden;
+  border: 1px solid #dddddd;
 }
 .login-box-body .form-control-feedback,
 .register-box-body .form-control-feedback {

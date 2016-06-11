@@ -138,6 +138,7 @@ ja:
       over_data_count: データ件数が多すぎます。
       invalid_digits: は無効な桁数です。
       invalid_characters: に全角文字を入力しないでください。
+      search_empty: 1件も見つかりません。
     template:
       body: 次の項目を確認してください。
       header:

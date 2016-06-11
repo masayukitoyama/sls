@@ -16,7 +16,6 @@
  *= require bootstrap-material-design.min.css
  *= require ripples.css
  *= require ripples.min.css
- *= require mdb.css
  *= require style.css
  *= require_tree .
  *= require_self

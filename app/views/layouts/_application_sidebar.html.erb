@@ -1,5 +1,22 @@
 <aside class="main-sidebar">
   <section class="sidebar" style="height: auto;">
-
+    <ul class="sidebar-menu">
+      <li class="header">MAIN NAVIGATION</li>
+      <li class="treeview <%= @task_menu %>">
+        <%= link_to tasks_path do %>
+          <i class="fa fa-table"></i> <span>課題一覧</span> <i class="fa fa-refresh pull-right"></i>
+        <% end %>
+      </li>
+      <li class="treeview <%= @user_menu %>">
+        <%= link_to users_path do %>
+          <i class="fa fa-users"></i> <span>ユーザー一覧</span> <i class="fa fa-refresh pull-right"></i>
+        <% end %>
+      </li>
+      <li class="treeview <%= @user_menu %>">
+        <%= link_to users_path do %>
+          <i class="fa fa-pie-chart"></i> <span>進捗一覧</span> <i class="fa fa-refresh pull-right"></i>
+        <% end %>
+      </li>
+    </ul>
   </section>
 </aside>

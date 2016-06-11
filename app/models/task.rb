@@ -3,4 +3,8 @@ class Task < ActiveRecord::Base
 
   acts_as_paranoid
 
+  def self.get_all_tasks
+    Task.all
+  end
+
 end

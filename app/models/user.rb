@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   acts_as_paranoid
+
+  def self.get_all_users
+    User.all
+  end
 end

@@ -1,26 +1,24 @@
-<form method="GET" action="/tasks" class="form-horizontal">
-  <div class="search-form margin-bottom-10">
-    <div class="row">
-
-      <div class="col-lg-12">
-        <label class="col-lg-2 control-label">課題種別</label>
-        <div class="col-lg-3 padding-0">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <%= select_tag 'task_category_id', options_for_select(task_categories_options.map{|a| [a.task_category_title, a.id]}, params[:task_category_id]), :class => 'category form-control' %>
+<div class="search-form margin-bottom-10">
+  <form method="GET" action="/tasks" class="form-horizontal">
+      <div class="row">
+        <div class="form-group col-lg-12">
+          <div class="form-group col-lg-5">
+            <label class="col-lg-6 control-label">課題種別</label>
+            <div class="col-lg-6">
+              <%= select_tag 'task_category_id', options_for_select(task_categories_options.map{|a| [a.task_category_title, a.id]}, params[:task_category_id]), {:class => 'form-control', :include_blank => "選択して下さい"} %>
+            </div>
           </div>
-        </div>
-        <label class="col-lg-2 control-label">課題タイトル</label>
-        <div class="col-lg-3 padding-0">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <%= text_field_tag :task_title, params[:task_title], :class => 'title form-control' %>
+          <div class="form-group col-lg-6">
+            <label class="control-label col-lg-4" for="task_title">課題タイトル</label>
+            <div class="col-lg-8">
+              <%= text_field_tag :task_title, params[:task_title], :class => 'form-control' %>
+            </div>
           </div>
-        </div>
-        <div class="col-lg-1 search-btn">
-          <button class="btn btn-block btn-default"><i class="fa fa-search"></i></button>
+          <div class="col-lg-1 search-btn">
+            <input type="submit" class="btn btn-success" value="検索"></input>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</form>
+  </form>
+</div>

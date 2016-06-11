@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render '/layouts/head' %>
+  </head>
+  <body class="hold-transition login-page">
+    <div class="login-box">
+      <!-- logo start-->
+      <div class="login-logo">
+        <a href="login.html"><%= image_tag 'logo.png', alt: "", width: "100" %></a>
+      </div>
+      <!-- logo end-->
+      <!-- login-box start -->
+      <%= yield %>
+      <!-- login-box end -->
+    </div>
+
+    <script>
+      $(function () {
+
+        //iCheck
+        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+          checkboxClass: 'icheckbox_minimal-red',
+          radioClass: 'iradio_minimal-red'
+        });
+
+      });
+    </script>
+  </body>
+</html>
