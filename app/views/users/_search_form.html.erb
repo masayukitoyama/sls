@@ -1,22 +1,25 @@
 <div class="search-form margin-bottom-10">
   <form method="GET" action="/users/search" class="form-horizontal">
       <div class="row">
-
-        <div class="col-lg-12 padding-bottom-10">
+        <div class="form-group col-lg-12">
           <label class="col-lg-2 control-label">ユーザー名</label>
           <div class="col-lg-4">
-            <%= text_field_tag :user_name, params[:user_name], :class => 'user_name form-control' %>
+            <%= text_field_tag :user_name, params[:user_name], :class => 'form-control' %>
           </div>
           <label class="col-lg-2 control-label">職種</label>
           <div class="col-lg-4">
             <%= select_tag :job_type, options_for_select(job_types_options.map{|a| [a.job_type_name, a.id]}, params[:job_type]), {class: 'form-control', include_blank: INCLUDE_BLANK_MESSAGE } %>
           </div>
         </div>
-
-      </div>
-
-        <div class="col-lg-1 search-btn">
-          <input type="submit" class="btn btn-success" value="検索"></input>
+        <div class="form-group col-lg-12">
+          <label class="col-lg-2 control-label">所属</label>
+          <div class="col-lg-4">
+            <%= select_tag :belonging, options_for_select(belongings_options.map{|a| [a.belonging_name, a.id]}, params[:belonging]), {class: 'form-control', include_blank: INCLUDE_BLANK_MESSAGE } %>
+          </div>
+          <label class="col-lg-2 control-label">&nbsp;</label>
+          <div class="col-lg-4 search-btn">
+            <button  class="btn btn-block btn-success">検索</button>
+          </div>
         </div>
       </div>
     </div>

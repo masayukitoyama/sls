@@ -8,14 +8,14 @@
               <%= select_tag 'task_category_id', options_for_select(task_categories_options.map{|a| [a.task_category_title, a.id]}, params[:task_category_id]), {:class => 'form-control', :include_blank => INCLUDE_BLANK_MESSAGE} %>
             </div>
           </div>
-          <div class="form-group col-lg-6">
+          <div class="form-group col-lg-5">
             <label class="control-label col-lg-4" for="task_title">課題タイトル</label>
             <div class="col-lg-8">
               <%= text_field_tag :task_title, params[:task_title], :class => 'form-control' %>
             </div>
           </div>
-          <div class="col-lg-1 search-btn">
-            <input type="submit" class="btn btn-success" value="検索"></input>
+          <div class="col-lg-2 search-btn">
+            <button class="btn btn-block btn-success">検索</button>
           </div>
         </div>
       </div>

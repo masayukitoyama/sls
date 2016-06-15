@@ -5,4 +5,10 @@ module UsersHelper
       options << job_type
     end
   end
+
+  def belongings_options
+    Belonging.all.inject(Array.new) do |options, belonging|
+      options << belonging
+    end
+  end
 end

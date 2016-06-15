@@ -7,12 +7,12 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = get_user_params(params)
+    @users = get_by_search_params(params)
     render :index
   end
 
   private
-    def get_user_params(params)
-      
+    def get_by_search_params(params)
+      return User.get_by_search_params(params)
     end
 end
