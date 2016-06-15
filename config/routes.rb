@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   # ユーザー
   get '/users' => 'users#index', as: 'users'
+  get '/users/search' => 'users#search'
   devise_for :users, :controllers => {
     confirmations: 'users/confirmations',
     passwords: 'users/passwords',

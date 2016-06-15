@@ -12,11 +12,12 @@
 //
 //= require jquery
 //= require bootstrap.min.js
+//= require underscore.string.js
 //= require material.js
 //= require material.min.js
 //= require ripples.js
 //= require ripples.min.js
-//= require mdb.js
+//= require vue.min.js
 //= require iCheck/icheck.js
 //= require chartjs/Chart.js
 //= require slimScroll/jquery.slimscroll.js
