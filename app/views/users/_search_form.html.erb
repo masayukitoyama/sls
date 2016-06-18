@@ -22,9 +22,11 @@
               <%= select_tag :belonging, options_for_select(belongings_options.map{|a| [a.belonging_name, a.id]}, params[:belonging]), {class: 'form-control', include_blank: INCLUDE_BLANK_MESSAGE } %>
             </div>
           </div>
-          <label class="col-sm-2 control-label">&nbsp;</label>
-          <div class="col-sm-4 search-btn">
-            <button  class="btn btn-block btn-success">検索</button>
+          <div class="col-sm-6">
+            <label class="col-sm-5 control-label">&nbsp;</label>
+            <div class="col-sm-7 search-btn margin-top-10 ">
+              <button  class="btn btn-block btn-success">検索</button>
+            </div>
           </div>
         </div>
       </div>

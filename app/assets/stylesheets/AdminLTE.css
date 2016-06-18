@@ -229,6 +229,7 @@ a:focus {
 }
 .main-header .navbar-custom-menu,
 .main-header .navbar-right {
+  height: 50px;
   float: right;
 }
 @media (max-width: 991px) {
@@ -255,7 +256,7 @@ a:focus {
   background-color: transparent;
   background-image: none;
   padding: 15px 15px;
-  height: 60px;
+  height: 50px;
   font-family: fontAwesome;
 }
 .main-header .sidebar-toggle:before {
@@ -291,7 +292,7 @@ a:focus {
   transition: width 0.3s ease-in-out;
   display: block;
   float: left;
-  height: 60px;
+  height: 50px;
   font-size: 20px;
   line-height: 50px;
   text-align: center;
