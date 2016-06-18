@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  protect_from_forgery :expect => [:search]
 
   def index
     @users = User.get_all_users

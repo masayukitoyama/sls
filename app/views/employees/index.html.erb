@@ -1,8 +1,8 @@
 <section class="content-header">
-  <h1>内定者一覧</h1>
+  <h1>社員一覧</h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
-    <li class="active">内定者一覧</li>
+    <li class="active">社員一覧</li>
   </ol>
 </section>
 <div id="user-list">
@@ -12,7 +12,7 @@
         <div class="box">
           <div class="box-body">
             <%= render 'search_form' %>
-            <% if @users.present? %>
+            <% if @employees.present? %>
               <table id="user-list-table-1" class="table table-responsive table-striped table-hover">
                 <thead>
                   <tr>
@@ -28,16 +28,16 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% @users.each do |user| %>
+                  <% @employees.each do |employee| %>
                     <tr clas="cursor-pointer">
                       <td>
-                        <%= user.user_name %>
+                        <%= employee.user_name %>
                       </td>
                       <td>
-                        <%= user.email %>
+                        <%= employee.email %>
                       </td>
                       <td>
-                        <%=  %>
+                        <%=  employee.employee_number%>
                       </td>
                     </tr>
                   <% end %>

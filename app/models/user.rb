@@ -11,15 +11,30 @@ class User < ActiveRecord::Base
 
   scope :where_user_name, -> (user_name) { where("user_name like ?", "%" + user_name + "%") }
   scope :where_job_type, -> (job_type) { where("job_type = ?", job_type) }
-  scope :where_belonging, -> (belonging) { where("belonging_id = ?", belonging) }
+  scope :where_belonging, -> (belonging) { where("belonging = ?", belonging) }
+  scope :where_employee_number, -> (employee_number) { where("employee_number = ?", employee_number) }
+  scope :get_by_employee_number, -> { where("employee_number is not NULL") }
 
   def self.get_all_users
     User.all
   end
 
   def self.get_by_search_params(params)
-    users = self.where_user_name(params[:user_name]) if params[:user_name].present?
-    users = self.where_job_type(params[:job_type]) if params[:job_type].present?
-    users = self.where_belonging(params[:belonging]) if params[:belonging].present?
+    users = User.where_user_name(params[:user_name]) if params[:user_name].present?
+    users = users.where_job_type(params[:job_type]) if params[:job_type].present?
+    users = users.where_belonging(params[:belonging]) if params[:belonging].present?
   end
+
+  def self.get_employees
+    User.get_by_employee_number
+  end
+
+  def self.get_employees_by_search_params(params)
+    employees = User.where_user_name(params[:user_name]) if params[:user_name].present?
+    employees = employees.where_job_type(params[:job_type]) if params[:job_type].present?
+    employees = employees.where_belonging(params[:belonging]) if params[:belonging].present?
+    employees = employees.where_employee_number(params[:employee_number]) if params[:employee_number].present?
+    employees = employees.get_by_employee_number
+  end
+
 end

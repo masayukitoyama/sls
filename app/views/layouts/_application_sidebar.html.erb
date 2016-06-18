@@ -9,7 +9,12 @@
       </li>
       <li class="treeview <%= @user_menu %>">
         <%= link_to users_path do %>
-          <i class="fa fa-users"></i> <span>ユーザー一覧</span> <i class="fa fa-refresh pull-right"></i>
+          <i class="fa fa-users"></i> <span>内定者一覧</span> <i class="fa fa-refresh pull-right"></i>
+        <% end %>
+      </li>
+      <li class="treeview <%= @employee_menu %>">
+        <%= link_to employees_path do %>
+          <i class="fa fa-users"></i> <span>社員一覧</span> <i class="fa fa-refresh pull-right"></i>
         <% end %>
       </li>
       <li class="treeview <%= @user_menu %>">

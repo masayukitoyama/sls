@@ -3,9 +3,14 @@ Rails.application.routes.draw do
   resources :task_categories
   resources :tasks
 
-  # ユーザー
+  # 内定者
   get '/users' => 'users#index', as: 'users'
   get '/users/search' => 'users#search'
+
+  # 社員
+  get '/employees' => 'employees#index', as: 'employees'
+  get '/employees/search' => 'users#search'
+
   devise_for :users, :controllers => {
     confirmations: 'users/confirmations',
     passwords: 'users/passwords',
