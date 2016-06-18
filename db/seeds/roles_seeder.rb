@@ -5,7 +5,7 @@ unless Role.find_by(id: 1)
 end
 unless Role.find_by(id: 2)
   Role.create(
-      role_name: "作成権限" # 部屋作成可能
+      role_name: "リーダー権限" # 部屋作成可能
     )
 end
 unless Role.find_by(id: 3)

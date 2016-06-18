@@ -1,15 +1,18 @@
 class @UsersController
 
-  index: () ->
+  index: ->
+
+
+  new: ->
     resource = new Resources()
 
     new Vue
-      el: "#user-list"
+      el: "#user-new"
       data:
-        message: "hello"
-
-      created: ->
-        this.init()
-
-      methods:
-        init: () ->
+        is_edit: false
+        modaldata:
+          id: ""
+          user_name: ""
+          email: ""
+          job_type: ""
+          user_memo: ""

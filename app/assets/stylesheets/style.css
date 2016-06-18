@@ -1,6 +1,9 @@
 /* 共通 */
-.margin-right-5 {
-  margin-bottom: 5px !important;
+.margin-right-10 {
+  margin-right: 5px !important;
+}
+.margin-left-10 {
+  margin-left: 5px !important;
 }
 .margin-bottom-10 {
   margin-bottom: 10px !important;

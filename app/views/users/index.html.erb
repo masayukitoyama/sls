@@ -12,6 +12,16 @@
         <div class="box">
           <div class="box-body">
             <%= render 'search_form' %>
+            <% if current_user.admin? %>
+              <div class="margin-bottom-10">
+                <div class="row">
+                  <div class="col-md-2 margin-left-10 ">
+                    <%= link_to "新規登録", new_user_path,class: "btn btn-raised btn-info" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
             <% if @users.present? %>
               <table id="user-list-table-1" class="table table-responsive table-striped table-hover">
                 <thead>
@@ -53,4 +63,5 @@
       </div>
     </div>
   </section>
+  <%= render 'modal' %>
 </div>

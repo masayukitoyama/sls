@@ -5,11 +5,10 @@ Rails.application.routes.draw do
 
   # 内定者
   get '/users' => 'users#index', as: 'users'
-  get '/users/search' => 'users#search'
+  get '/user/new' => 'users#new', as: 'new_user'
 
   # 社員
   get '/employees' => 'employees#index', as: 'employees'
-  get '/employees/search' => 'users#search'
 
   devise_for :users, :controllers => {
     confirmations: 'users/confirmations',
