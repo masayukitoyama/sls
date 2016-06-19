@@ -52,3 +52,7 @@ class @Resources
       error: (XMLHttpRequest, textStatus, errorThrown) =>
         if error
           error(XMLHttpRequest, textStatus, errorThrown)
+
+  createUser: (params, success) ->
+    url = "/api/users"
+    @post(url, params, success, null)

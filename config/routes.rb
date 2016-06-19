@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
+  namespace :api, { format: 'json' } do
+    post 'users' => 'users#create'
+    put  'user/:id' => 'users#update'
+  end
+
   resources :task_categories
   resources :tasks
 
   # 内定者
   get '/users' => 'users#index', as: 'users'
-  get '/user/new' => 'users#new', as: 'new_user'
 
   # 社員
   get '/employees' => 'employees#index', as: 'employees'
