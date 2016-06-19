@@ -17,6 +17,7 @@ class @UsersController
           email: ""
           password: ""
           job_type: ""
+        users: ""
 
 
       created: ->
@@ -25,6 +26,7 @@ class @UsersController
       methods:
         init: ->
           this.resetModalData()
+          this.users = gon.users
 
         resetModalData: ->
           this.is_edit = false
@@ -33,19 +35,20 @@ class @UsersController
           this.modaldata.password = ""
           this.modaldata.job_type = ""
 
+
         onUserNewClicked: ->
           this.resetModalData()
           $("#newUserCreateBtn").blur()
           this.deleteErrorText()
-          $('#newModal').modal()
+          $('#userModal').modal()
 
         showConfirmModal: ->
-          $('#newModal').modal('hide')
+          $('#userModal').modal('hide')
           $('#confirmModal').modal()
 
-        showNewModal: ->
+        showUserModal: ->
           $('#confirmModal').modal('hide')
-          $('#newModal').modal()
+          $('#userModal').modal()
 
         createUser: ->
           this.deleteErrorText()
@@ -56,12 +59,46 @@ class @UsersController
             email: this.modaldata.email
             password: this.modaldata.password
           resource.createUser params, (data) ->
+            $('#confirmModal').modal('hide')
+            if data.errors
+              this.errors = data.errors
+              $('#userModal').modal()
+              that.insertErrorText()
+            else
+              window.location.reload()
+
+        showEditModal: (user_id) ->
+          this.deleteErrorText()
+          editUser = this.findUser(user_id)
+          this.setEditData(editUser)
+          $('#userModal').modal()
+
+        findUser: (user_id) ->
+          for user in this.users
+            if user.id == parseInt(user_id)
+              return user
+
+        setEditData: (editUser) ->
+          this.modaldata.id = editUser.id
+          this.modaldata.user_name = editUser.user_name
+          this.modaldata.email = editUser.email
+          this.is_edit = true
+
+        updateUser: () ->
+          that = this
+          params =
+            id: this.modaldata.id
+            user_name: this.modaldata.user_name
+            email: this.modaldata.email
+          resource.updateUser params, (data) ->
+            $('#confirmModal').modal('hide')
             if data.errors
               this.errors = data.errors
               that.insertErrorText()
+              $('#userModal').modal()
             else
-              $('#confirmModal').modal('hide')
               window.location.reload()
+
 
         deleteErrorText: ->
           $('.error_msg').html("")

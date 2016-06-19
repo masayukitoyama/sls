@@ -1,7 +1,6 @@
 class Api::UsersController < ApiApplicationController
 
   def create
-    binding.pry
     @user = User.new(get_user_params)
     if @user.valid?
       @user.save
@@ -9,10 +8,8 @@ class Api::UsersController < ApiApplicationController
   end
 
   def update
-    @user = User.find_by_user_id_with_deleted(params[:id])
-    if executable_action?(@user)
-      @user.update_user_info(get_user_params.tap{ |u| u[:role_type] = u[:role_type].to_i })
-    end
+    @user = User.find_by(id: params[:id])
+    @user.update_user_info(params)
   end
 
   def init_password

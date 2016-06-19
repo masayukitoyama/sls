@@ -34,13 +34,13 @@
                         メールアドレス
                       </th>
                       <th>
-                        社員番号
+                        職種
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     <% @users.each do |user| %>
-                      <tr clas="cursor-pointer">
+                      <tr class="cursor-pointer" v-on:click='showEditModal("<%= user.id %>")'>
                         <td>
                           <%= user.user_name %>
                         </td>

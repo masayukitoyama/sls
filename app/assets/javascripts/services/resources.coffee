@@ -56,3 +56,7 @@ class @Resources
   createUser: (params, success) ->
     url = "/api/users"
     @post(url, params, success, null)
+
+  updateUser: (params, success) ->
+    url = "api/user/" + params.id
+    @put(url, params, success, null)

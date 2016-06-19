@@ -3,7 +3,7 @@ json.data do
   json.user do
     json.extract! @user,
       :id,
-      :name,
+      :user_name,
       :email
   end
 end

@@ -60,6 +60,13 @@ class User < ActiveRecord::Base
     return employees
   end
 
+  def update_user_info(params)
+    update(
+      user_name: params[:user_name],
+      email: params[:email]
+      )
+  end
+
 
 
 end

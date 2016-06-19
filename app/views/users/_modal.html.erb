@@ -1,4 +1,4 @@
-<div id="newModal" class="modal fade" aria-hidden="true" role="dialog">
+<div id="userModal" class="modal fade" aria-hidden="true" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -9,23 +9,23 @@
       <div class="modal-body">
         <div class="new-form">
           <div class="table-responsive">
-            <div class="form-group col-md-7 has-error">
+            <div class="form-group col-md-10">
               <label for="inputName" class="col-md-4 control-label">Name<span class="asterisk">*</span></label>
-              <div class="col-md-7">
+              <div class="col-md-8">
                 <input type="text" class="form-control" v-model="modaldata.user_name" placeholder="Name" required autofocus="true">
                 <p class="help-block">You should really write something here</p>
               </div>
             </div>
-            <div class="form-group col-md-7">
+            <div class="form-group col-md-10">
               <label for="inputEmail" class="col-md-4 control-label">Email<span class="asterisk">*</span></label>
-              <div class="col-md-7">
+              <div class="col-md-8">
                 <input type="email" class="form-control" v-model="modaldata.email" placeholder="Email" required>
                 <p class="help-block">You should really write something here</p>
               </div>
             </div>
-            <div class="form-group col-md-7">
+            <div class="form-group col-md-10">
               <label for="inputPassword" class="col-md-4 control-label">Password<span class="asterisk">*</span></label>
-              <div class="col-md-7">
+              <div class="col-md-8">
                 <input type="password" class="form-control" v-model="modaldata.password" placeholder="Password" required min="6" max="15">
               </div>
             </div>
@@ -47,27 +47,27 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title" v-else>内定者登録</h4>
-        <h4 class="modal-title" v-if="is_edit">内定者編集</h4>
+        <h4 class="modal-title" v-if="is_edit"e>内定者編集(確認)</h4>
+        <h4 class="modal-title" v-else>内定者登録(確認)</h4>
       </div>
       <div class="modal-body">
         <div class="new-form">
           <div class="table-responsive">
-            <div class="col-md-7">
+            <div class="col-md-10">
               <label for="inputName" class="col-md-4">Name</label>
               <div class="user_name col-md-8">
                 {{modaldata.user_name}}
               </div>
               <div id="error_user_name" class="text-danger error_msg"></div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-10">
               <label for="inputEmail" class="col-md-4">Email</label>
               <div class="email col-md-8">
                 {{modaldata.email}}
               </div>
               <div id="error_email" class="text-danger error_msg"></div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-10">
               <label for="inputPassword" class="col-md-4">Password</label>
               <div class="password col-md-8">
                 {{modaldata.password}}
@@ -78,8 +78,9 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" v-on:click="showNewModal">戻る</button>
-        <button type="button" class="btn btn-info" id="createUserBtn" v-on:click="createUser">登録</button>
+        <button type="button" class="btn btn-default" v-on:click="showUserModal">戻る</button>
+        <button type="button" class="btn btn-info" id="createUserBtn" v-on:click="updateUser" v-if="is_edit">更新</button>
+        <button type="button" class="btn btn-info" id="updateUserBtn" v-on:click="createUser" v-else>登録</button>
       </div>
     </div>
   </div>
