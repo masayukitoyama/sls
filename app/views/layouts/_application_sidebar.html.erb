@@ -2,19 +2,9 @@
   <section class="sidebar" style="height: auto;">
     <ul class="sidebar-menu">
       <li class="header">MAIN NAVIGATION</li>
-      <li class="treeview <%= @task_menu %>">
-        <%= link_to tasks_path do %>
-          <i class="fa fa-table"></i> <span>課題一覧</span> <i class="fa fa-refresh pull-right"></i>
-        <% end %>
-      </li>
       <li class="treeview <%= @user_menu %>">
         <%= link_to users_path do %>
-          <i class="fa fa-child" aria-hidden="true"></i><span>内定者一覧</span> <i class="fa fa-refresh pull-right"></i>
-        <% end %>
-      </li>
-      <li class="treeview <%= @employee_menu %>">
-        <%= link_to employees_path do %>
-          <i class="fa fa-users"></i> <span>社員一覧</span> <i class="fa fa-refresh pull-right"></i>
+          <i class="fa fa-child" aria-hidden="true"></i><span>利用者一覧</span> <i class="fa fa-refresh pull-right"></i>
         <% end %>
       </li>
       <li class="treeview <%= @user_menu %>">

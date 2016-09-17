@@ -5,14 +5,8 @@ Rails.application.routes.draw do
     put  'user/:id' => 'users#update'
   end
 
-  resources :task_categories
-  resources :tasks
-
-  # 内定者
   get '/users' => 'users#index', as: 'users'
 
-  # 社員
-  get '/employees' => 'employees#index', as: 'employees'
 
   devise_for :users, :controllers => {
     confirmations: 'users/confirmations',
@@ -20,7 +14,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  root to: 'tasks#index'
+  root to: 'users#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
