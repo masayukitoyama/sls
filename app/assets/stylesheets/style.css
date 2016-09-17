@@ -2,8 +2,11 @@
 .margin-right-10 {
   margin-right: 5px !important;
 }
-.margin-left-10 {
+.margin-left-5 {
   margin-left: 5px !important;
+}
+.margin-left-60 {
+  margin-left: 60px !important;
 }
 .margin-bottom-10 {
   margin-bottom: 10px !important;
@@ -14,6 +17,10 @@
 .padding-bottom-10 {
   padding-bottom: 10px !important;
 }
+.padding-left-20 {
+  padding-left: 20px !important;
+}
+
 .form-control {
   height: 40px;
 }

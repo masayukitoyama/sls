@@ -8,6 +8,11 @@ class @BooksController
       paginationClickable: true,
       spaceBetween: 30,
       centeredSlides: true,
-      autoplay: 1000,
+      autoplay: 2000,
       autoplayDisableOnInteraction: false
     });
+
+  search: ->
+    $('input').iCheck
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass: 'iradio_flat-green'

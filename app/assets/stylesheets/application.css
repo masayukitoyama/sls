@@ -11,6 +11,12 @@
  * file per style scope.
  *
  *= require bootstrap.css
+ *= require iCheck/minimal/_all.css
+ *= require iCheck/square/_all.css
+ *= require iCheck/flat/_all.css
+ *= require iCheck/line/_all.css
+ *= require iCheck/polaris/polaris.css
+ *= require iCheck/futurico/futurico.css
  *= require bootstrap.min.css
  *= require bootstrap-material-design.css
  *= require bootstrap-material-design.min.css
