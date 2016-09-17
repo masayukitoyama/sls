@@ -6,56 +6,54 @@
   </ol>
 </section>
 <div id="user-list">
-  <div>
-    <section class="content user-list-block-1">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-body">
-              <%= render 'search_form' %>
-                <div class="margin-bottom-10">
-                  <div class="row">
-                    <div class="col-md-2 margin-left-10 ">
-                      <button type="button" id="newUserCreateBtn" class="btn btn-raised btn-info" v-on:click="onUserNewClicked">新規登録</button>
-                    </div>
+  <section class="content user-list-block-1">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-body">
+            <%= render 'search_form' %>
+              <div class="margin-bottom-10">
+                <div class="row">
+                  <div class="col-md-2 margin-left-10 ">
+                    <button type="button" id="newUserCreateBtn" class="btn btn-raised btn-info" v-on:click="onUserNewClicked">新規登録</button>
                   </div>
                 </div>
+              </div>
 
-              <% if @users.present? %>
-                <table id="user-list-table-1" class="table table-responsive table-striped table-hover">
-                  <thead>
-                    <tr>
-                      <th>
-                        名前
-                      </th>
-                      <th>
-                        メールアドレス
-                      </th>
+            <% if @users.present? %>
+              <table id="user-list-table-1" class="table table-responsive table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>
+                      名前
+                    </th>
+                    <th>
+                      メールアドレス
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @users.each do |user| %>
+                    <tr class="cursor-pointer" v-on:click='showEditModal("<%= user.id %>")'>
+                      <td>
+                        <%= user.user_name %>
+                      </td>
+                      <td>
+                        <%= user.email %>
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    <% @users.each do |user| %>
-                      <tr class="cursor-pointer" v-on:click='showEditModal("<%= user.id %>")'>
-                        <td>
-                          <%= user.user_name %>
-                        </td>
-                        <td>
-                          <%= user.email %>
-                        </td>
-                      </tr>
-                    <% end %>
-                  </tbody>
-                </table>
-              <% else %>
-                <div class="col-sm-12 search_empty_msg">
-                  <p> <%= t('errors.messages.search_empty') %></p>
-                </div>
-              <% end %>
-            </div><!-- box-body -->
-          </div><!-- box -->
-        </div>
-      </div><!-- row -->
-    </section>
-    <%= render 'modal' %>
-  </div>
+                  <% end %>
+                </tbody>
+              </table>
+            <% else %>
+              <div class="col-sm-12 search_empty_msg">
+                <p> <%= t('errors.messages.search_empty') %></p>
+              </div>
+            <% end %>
+          </div><!-- box-body -->
+        </div><!-- box -->
+      </div>
+    </div><!-- row -->
+  </section>
+  <%= render 'modal' %>
 </div>

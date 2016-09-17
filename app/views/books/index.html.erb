@@ -11,22 +11,26 @@
               <div class="swiper-container">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
-                    SlideImage
+                    <% if @recommend_books.present? %>
+                      <% @recommend_books.each do |recommend_book| %>
+                        <%= recommend_book.image_url %>
+                      <% end %>
+                    <% end %>
                   </div>
                   <div class="swiper-slide">
-                    SlideImage
+                    SlideImage1
                   </div>
                   <div class="swiper-slide">
-                    SlideImage
+                    SlideImage2
                   </div>
                   <div class="swiper-slide">
-                    SlideImage
+                    SlideImage3
                   </div>
                   <div class="swiper-slide">
-                    SlideImage
+                    SlideImage4
                   </div>
                   <div class="swiper-slide">
-                    SlideImage
+                    SlideImage5
                   </div>
                 </div>
                 <!-- Add Pagination -->

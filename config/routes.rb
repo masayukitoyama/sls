@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :books
   resources :borrow_histories
   namespace :api, { format: 'json' } do
     post 'users' => 'users#create'
@@ -8,7 +7,9 @@ Rails.application.routes.draw do
   end
 
   get '/users' => 'users#index', as: 'users'
-
+  get '/books' => 'books#index', as: 'books'
+  get '/book/new' => 'books#new', as: 'book_new'
+  get '/book/search' => 'books#search', as: 'book_search'
 
   devise_for :users, :controllers => {
     confirmations: 'users/confirmations',
