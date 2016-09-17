@@ -5,6 +5,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :isbn_13
       t.string :asin
       t.string :title
+      t.string :author
       t.text   :image_url
       t.datetime :deleted_at
       t.timestamps null: false
