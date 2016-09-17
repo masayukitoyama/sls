@@ -13,6 +13,16 @@ class @BooksController
     });
 
   search: ->
+    that = this
     $('input').iCheck
       checkboxClass: 'icheckbox_flat-green',
       radioClass: 'iradio_flat-green'
+    $('#search_from_exist_data').iCheck('check')
+
+    $('#search_from_aws_data').on('ifChecked', ->
+      $('#search_key').hide()
+    )
+
+    $('#search_from_exist_data').on('ifChecked', ->
+      $('#search_key').show()
+    )

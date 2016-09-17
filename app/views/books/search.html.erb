@@ -7,96 +7,70 @@
     </ol>
   </section>
 </div>
-<section class="content books-search-block-1">
-  <div class="row">
-    <form method="GET" action="/book/search" class="form-horizontal">
-      <div class="form-group col-lg-12">
-        <div class="col-lg-2 control-label">
-          <input type="radio" name="icon" class="flat-green">
-          <span for="flat-radio-1" class="">既存のデータから検索する</span>
-        </div>
-        <div class="col-lg-2 control-label">
-          <input type="radio" name="icon" class="flat-green">
-          <span for="flat-radio-1" class="">Amazonから検索する</span>
-        </div>
-      </div>
-      <div class="form-group col-lg-12">
-        <label class="col-lg-1 control-label">キーワード</label>
-        <div class="col-lg-4 padding-0">
-          <%= text_field_tag :keyword, params[:keyword], :class => 'book form-control' %>
-        </div>
-        <div class="col-lg-2">
-          <label class="col-lg-2 control-label">&nbsp;</label>
-          <div class="col-lg-8 search-btn">
-            <button class="btn btn-block btn-primary">検索</button>
+<div id="bookSearch">
+  <section class="content books-search-block-1">
+    <div class="row">
+      <form method="GET" action="/book/search" class="form-horizontal">
+        <div class="form-group col-lg-12">
+          <div class="col-lg-2 control-label">
+            <%= radio_button_tag 'search_from', "exist_data","", {:class => "flat-green"} %>
+            <span for="flat-radio-1" class="">既存のデータから検索する</span>
+          </div>
+          <div class="col-lg-2 control-label">
+            <%= radio_button_tag 'search_from', "aws_data","", {:class => "flat-green"} %>
+            <span for="flat-radio-1" class="">Amazonから検索する</span>
           </div>
         </div>
-      </div>
-    </form>
-  </div>
-  <div class="post">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="book-search-title">
-          <h3>検索結果</h3>
+        <div class="form-group col-lg-12">
+          <div id="search_key">
+            <label class="col-lg-1 control-label">key</label>
+            <div class="col-lg-4 padding-0">
+              <%= select_tag :key, options_for_select(get_book_columns(), params[:key]), :class => 'key form-control' %>
+            </div>
+          </div>
+          <label class="col-lg-1 control-label">キーワード</label>
+          <div class="col-lg-4 padding-0">
+            <%= text_field_tag :keyword, params[:keyword], :class => 'keyword form-control' %>
+          </div>
+          <div class="col-lg-2">
+            <label class="col-lg-2 control-label">&nbsp;</label>
+            <div class="col-lg-8 search-btn">
+              <button class="btn btn-block btn-primary">検索</button>
+            </div>
+          </div>
         </div>
-        <ol class="book-search-list">
-          <li class="book-search-result">
-            <img src="https://pbs.twimg.com/profile_images/378800000220029324/fe66faeca20115da8566e51d83447ead_400x400.jpeg" class="image-list">
-            <div class="">
-              title
+      </form>
+    </div>
+    <div class="post">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="book-search-title">
+            <h3>検索結果</h3>
+          </div>
+          <% if @book_search_results.present? %>
+            <ol class="book-search-list">
+              <% @book_search_results.each do |book_search_result| %>
+                <li class="book-search-result">
+                  <img src="<%= book_search_result[:image_url] %>" class="image-list">
+                  <div class="">
+                    <%= book_search_result[:title] %>
+                  </div>
+                  <div class="">
+                    <%= book_search_result[:author] %>
+                  </div>
+                  <div class="">
+                    <%= book_search_result[:asin] %>
+                  </div>
+                </li>
+              <% end %>
+            </ol>
+          <% else %>
+            <div class="col-sm-12 search_empty_msg">
+              <p> <%= t('errors.messages.search_empty') %></p>
             </div>
-            <div class="">
-              author
-            </div>
-          </li>
-          <li class="book-search-result">
-            <img src="https://pbs.twimg.com/profile_images/378800000220029324/fe66faeca20115da8566e51d83447ead_400x400.jpeg" class="image-list">
-            <div class="">
-              title
-            </div>
-            <div class="">
-              author
-            </div>
-          </li>
-          <li class="book-search-result">
-            <img src="https://pbs.twimg.com/profile_images/378800000220029324/fe66faeca20115da8566e51d83447ead_400x400.jpeg" class="image-list">
-            <div class="">
-              title
-            </div>
-            <div class="">
-              author
-            </div>
-          </li>
-          <li class="book-search-result">
-            <img src="https://pbs.twimg.com/profile_images/378800000220029324/fe66faeca20115da8566e51d83447ead_400x400.jpeg" class="image-list">
-            <div class="">
-              title
-            </div>
-            <div class="">
-              author
-            </div>
-          </li>
-          <li class="book-search-result">
-            <img src="https://pbs.twimg.com/profile_images/378800000220029324/fe66faeca20115da8566e51d83447ead_400x400.jpeg" class="image-list">
-            <div class="">
-              title
-            </div>
-            <div class="">
-              author
-            </div>
-          </li>
-          <li class="book-search-result">
-            <img src="https://pbs.twimg.com/profile_images/378800000220029324/fe66faeca20115da8566e51d83447ead_400x400.jpeg" class="image-list">
-            <div class="">
-              title
-            </div>
-            <div class="">
-              author
-            </div>
-          </li>
-        </ol>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
