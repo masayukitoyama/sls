@@ -22,5 +22,6 @@
 //= require chartjs/Chart.js
 //= require slimScroll/jquery.slimscroll.js
 //= require sparkline/jquery.sparkline.js
+//= require Swiper/dist/js/swiper.min.js
 //= require_tree .
 $.material.init()

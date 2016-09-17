@@ -17,6 +17,7 @@
  *= require ripples.css
  *= require ripples.min.css
  *= require style.css
+ *= require Swiper/dist/css/swiper.min.css
  *= require_tree .
  *= require_self
  */
