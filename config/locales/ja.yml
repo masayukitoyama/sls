@@ -122,16 +122,8 @@ ja:
       too_short: は%{count}文字以上で入力してください。
       wrong_length: は%{count}文字で入力してください。
       other_than: は%{count}以外の値にしてください。
-      search_empty: 検索結果が1件も見つかりません。
+      search_empty: 検索結果が1件も見つかりませんでした。
       list_empty: データが登録されていません。
-      magellan_action_plan_empty: アクションプランが設定されていません。
-      lincoln_action_plan_empty: アクションプランが設定されていません。
-      related_lincoln_empty: マネジャー情報がありません。
-      related_magellan_empty: 担当組織情報がありません。
-      survey_chain_empty: 経年属性が設定されていません。
-      goal_empty: 目標の組織像を登録してください。
-      conflict_error: 第3者によってデータが更新されたため、操作が完了できませんでした。
-      user_csv_null_error: インポートするCSVファイルを選択してください。
       user_csv_format_error: ファイルフォーマットが不正です。
       user_csv_data_error: データが不正です。
       invalid_encoding: 文字コードが不正です。

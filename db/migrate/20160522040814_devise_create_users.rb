@@ -7,6 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       ## Original datas
       t.string  :user_name, null: false
+      t.integer :authority_type, null: false
 
       ## Recoverable
       t.string   :reset_password_token

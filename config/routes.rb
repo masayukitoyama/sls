@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :books
+  resources :borrow_histories
   namespace :api, { format: 'json' } do
     post 'users' => 'users#create'
     put  'user/:id' => 'users#update'
