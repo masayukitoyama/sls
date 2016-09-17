@@ -11,8 +11,9 @@ class BooksController < ApplicationController
   end
 
   def search
-    isbn = params[:isbn]
-    title = params[:title]
+    @book_search_menu = MENU_ACTIVE
+    amazon_service = AmazonService.new
+    @book_search_results = amazon_service.get_book_search_results(params)
   end
 
   def new

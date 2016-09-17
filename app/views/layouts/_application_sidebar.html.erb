@@ -12,6 +12,11 @@
           <i class="fa fa-book"></i> <span>書籍一覧</span> <i class="fa fa-refresh pull-right"></i>
         <% end %>
       </li>
+      <li class="treeview <%= @book_search_menu %>">
+        <%= link_to book_search_path do %>
+          <i class="fa fa-search"></i> <span>書籍検索</span> <i class="fa fa-refresh pull-right"></i>
+        <% end %>
+      </li>
       <li class="treeview <%= @borrow_history_menu %>">
         <%= link_to borrow_histories_path do %>
           <i class="fa fa-history"></i> <span>貸し出し履歴</span> <i class="fa fa-refresh pull-right"></i>

@@ -33,6 +33,7 @@ gem 'whenever', require: false
 gem 'gon'
 gem 'jc-validates_timeliness'
 gem 'activerecord-import'
+gem 'amazon-ecs'
 #-------------
 # infra
 #-------------
