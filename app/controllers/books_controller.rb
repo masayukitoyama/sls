@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:edit, :update, :destroy]
 
   def index
     @recommend_books = Book.get_recommend_books
@@ -17,15 +16,28 @@ class BooksController < ApplicationController
   end
 
   def new
+    unless viewable_book_new?(current_user)
+      return render_404
+    end
     @book = params[:book]
   end
 
   def create
+    unless exectable_book_create?(current_user)
+      return render_404
+    end
     @book = Book.new(get_book_params)
     if @book.valid?
       @book.save
       redirect_to books_path
     end
+  end
+
+  def update
+    unless exectable_book_update?(current_user)
+      return render_404
+    end
+    @book = Book.find_by(id: params[:id])
   end
 
   private

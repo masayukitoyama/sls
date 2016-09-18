@@ -15,6 +15,23 @@ class User < ActiveRecord::Base
     normal: 2
   }
 
+  def admin?
+    self.authority_type == "admin"
+  end
+
+  def view?
+    self.authority_type == "view"
+  end
+
+  def normal?
+    self.authority_type == "normal"
+  end
+
+  def viewable?
+    self.authority_type == "admin" || self.authority_type == "view"
+  end
+
+
   def self.get_users_by_search_params(params)
     users = User.all
     users = self.where_user_name(params[:user_name]) if params[:user_name].present?

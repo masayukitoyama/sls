@@ -74,11 +74,11 @@
                     <div class="isbn_13">
                       <label class="font-bold">ISBN-13:</label>&nbsp;<%= book_search_result[:isbn_13] %>
                     </div>
-                    <% if book_search_result[:search_from] == AWSDATA %>
+                    <% if book_search_result[:search_from] == AWSDATA && current_user.admin? %>
                       <div class="new-btn">
                         <%= link_to "データ登録", book_new_path(book: book_search_result), class: "btn btn-info" %>
                       </div>
-                    <% else %>
+                    <% elsif book_search_result[:search_from] == EXISTDATA %>
                       <div class="new-btn">
                         <%= link_to "借りる", borrow_history_new_path(book_search_result[:id]), class: "btn btn-info" %>
                       </div>

@@ -14,9 +14,11 @@
             <%= render 'search_form' %>
               <div class="margin-bottom-10">
                 <div class="row">
-                  <div class="col-md-2 margin-left-10 ">
-                    <button type="button" id="newUserCreateBtn" class="btn btn-raised btn-info" v-on:click="onUserNewClicked">新規登録</button>
-                  </div>
+                  <% if current_user.admin? %>
+                    <div class="col-md-2 margin-left-10 ">
+                      <button type="button" id="newUserCreateBtn" class="btn btn-raised btn-info" v-on:click="onUserNewClicked">新規登録</button>
+                    </div>
+                  <% end %>
                 </div>
               </div>
 
