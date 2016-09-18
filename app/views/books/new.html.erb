@@ -33,7 +33,7 @@
               </div>
             </div>
             <div class="form-group col-md-8">
-              <label for="inputLimitDate" class="col-md-2 control-label">返却期間<span class="asterisk">*</span></label>
+              <label for="inputLimitDate" class="col-md-2 control-label">貸出期間<span class="asterisk">*</span></label>
               <div class="col-md-5">
                 <%= select_tag "return_day_type", options_for_select(RETURN_DAYS.map {|return_day| [return_day[:label], return_day[:id]]}), class: "form-control" %>
               </div>

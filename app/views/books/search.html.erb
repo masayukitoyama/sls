@@ -61,10 +61,10 @@
                       <%= link_to image_tag("#{book_search_result[:image_url]}"), book_detail_path("#{book_search_result[:id]}") %>
                     <% end %>
                   </div>
-                    <div class="title">
+                    <div class="title margin-top-20">
                       <%= link_to "#{book_search_result[:title]}", "#{book_search_result[:detail_page_url]}", target: "_blank"  %>
                     </div>
-                    <div class="author">
+                    <div class="author margin-top-10">
                       <label class="font-bold">著者：</label>
                       <%= book_search_result[:author] %>
                     </div>
