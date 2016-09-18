@@ -13,10 +13,10 @@
                   <% if @recommend_books.present? %>
                     <% @recommend_books.each do |recommend_book| %>
                       <div class="swiper-slide">
-                        <div class="book-image col-sm-4 text-center">
+                        <div class="book-image col-sm-5 text-right">
                           <%= link_to image_tag(recommend_book.image_url), book_detail_path(recommend_book.id) %>
                         </div>
-                        <div class="book-info col-sm-4">
+                        <div class="book-info col-sm-7">
                           <div class="title text-left">
                             <%= recommend_book.title %>
                           </div>
