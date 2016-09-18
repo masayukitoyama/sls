@@ -75,16 +75,26 @@
                     <label class="font-bold">ISBN-13:</label>&nbsp;<%= book_search_result[:isbn_13] %>
                   </div>
                   <% if book_search_result[:search_from] == AWSDATA && current_user.admin? %>
-                    <div class="new-btn">
+                    <div class="new-btn" style="inline-block;">
                       <%= link_to "データ登録", book_new_path(book: book_search_result), class: "btn btn-info" %>
                     </div>
                   <% elsif book_search_result[:search_from] == EXISTDATA && enable_borrow?(book_search_result) %>
-                    <div class="borrow-btn">
-                      <%= link_to "借りる", book_detail_path(book_search_result[:id]), class: "btn btn-info" %>
+                    <%= link_to "借りる", book_detail_path(book_search_result[:id]), class: "btn btn-info btn-sm" %>
+                    <div class="like-btn">
+                      <a class="btn btn-app">
+                        <span class="badge bg-blue">0</span>
+                        <i class="fa fa-heart-o"></i> Likes
+                      </a>
                     </div>
                   <% else %>
                     <div class="message text-center">
                       <label class="font-bold">貸出中</label>
+                      <div class="like-btn">
+                        <a class="btn btn-app">
+                          <span class="badge bg-blue">0</span>
+                          <i class="fa fa-heart-o"></i> Likes
+                        </a>
+                      </div>
                     </div>
                   <% end %>
                 </li>
