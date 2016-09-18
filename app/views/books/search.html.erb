@@ -54,7 +54,12 @@
             <ol class="book-search-list">
               <% @book_search_results.each do |book_search_result| %>
                 <li class="book-search-result">
-                  <%= link_to image_tag("#{book_search_result[:image_url]}"), book_detail_path %>
+                  <div class="book-image">
+                    <% if book_search_result[:search_from] == AWSDATA %>
+                      <span class="guard"></span>
+                    <% end %>
+                    <%= link_to image_tag("#{book_search_result[:image_url]}"), book_detail_path %>
+                  </div>
                     <div class="title">
                       <%= link_to "#{book_search_result[:title]}", "#{book_search_result[:detail_page_url]}", target: "_blank"  %>
                     </div>

@@ -30,13 +30,22 @@ li.book-search-result
   display: inline-block
   padding-left: 10px
   margin: 10px 10px
-  width: 170px
+  width: 200px
   min-height: 150px
-  img
+  position: relative
+  .guard
+    position: absolute
+    display: block
     width: 100%
+    height: 100%
+  .book-image
     min-height: 150px
+    img
+      width: 100%
+      height: 100%
   .title
     width: 200px
+    margin-top: 10px !important
   .title a
     color: #337ab7
     white-space: normal
