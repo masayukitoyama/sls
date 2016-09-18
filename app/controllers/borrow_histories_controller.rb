@@ -16,6 +16,10 @@ class BorrowHistoriesController < ApplicationController
     redirect_to borrow_histories_path
   end
 
+  def ranking
+    
+  end
+
   private
     def get_borrow_params
       params.permit(:book_id, :return_day_type)

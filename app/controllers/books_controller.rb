@@ -11,8 +11,8 @@ class BooksController < ApplicationController
     unless @book
       return render_404
     end
-    @total_stock = Book.count_book_stock(book)
-    @borrow_count = BorrowHistory.count_book_borrow(book)
+    @total_stock = Book.count_book_stock(@book)
+    @borrow_count = BorrowHistory.count_book_borrow(@book)
     @latest_book_history = BorrowHistory.get_latest_history_by_book_id(params[:id])
     @is_borrowing = is_borrowing?
   end
@@ -67,10 +67,10 @@ class BooksController < ApplicationController
     end
 
     def is_borrowing?
-      unless latest_book_history
+      unless @latest_book_history
         return false
       end
-      if total_stock <= borrow_count || latest_book_history.return_status > 0
+      if @total_stock <= @borrow_count || @latest_book_history.return_status > 0
         return true
       end
       false

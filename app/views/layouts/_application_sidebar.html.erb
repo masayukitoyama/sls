@@ -18,9 +18,24 @@
         <% end %>
       </li>
       <li class="treeview <%= @borrow_history_menu %>">
-        <%= link_to borrow_histories_path do %>
-          <i class="fa fa-history"></i> <span>貸出履歴</span> <i class="fa fa-refresh pull-right"></i>
-        <% end %>
+        <a href="">
+          <i class="fa fa-history"></i> <span>貸出履歴</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu" style="display: none;">
+          <li class="active">
+            <%= link_to borrow_histories_path do %>
+              <i class="fa fa-list-ol"></i>貸出履歴一覧
+            <% end %>
+          </li>
+          <li class="active">
+            <%= link_to borrow_hisotory_ranking_path do %>
+              <i class="fa fa-line-chart"></i>貸出履歴ランキング
+            <% end %>
+          </li>
+        </ul>
       </li>
     </ul>
   </section>

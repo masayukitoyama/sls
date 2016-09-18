@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   # 利用者一覧
-  get '/users' => 'users#index', as: 'users'
+  get 'users' => 'users#index', as: 'users'
 
   # 書籍
   get 'books' => 'books#index', as: 'books'
@@ -14,11 +14,13 @@ Rails.application.routes.draw do
   get 'book/:id' => 'books#show', as: 'book_detail'
   post 'books' => 'books#create', as: 'book_create'
 
-  # 貸し出し
-  get '/borrow_histories' => 'borrow_histories#index', as: 'borrow_histories'
-  get '/borrow/:id' => 'borrow_histories#new', as: 'borrow_history_new'
-  post '/borrow' => 'borrow_histories#create', as: 'borrow_history_create'
-  put '/borrow/:id' => 'borrow_histories#update', as: 'borrow_history_update'
+  # 貸出
+  get 'borrow_histories' => 'borrow_histories#index', as: 'borrow_histories'
+  post 'borrow' => 'borrow_histories#create', as: 'borrow_history_create'
+  put 'borrow/:id' => 'borrow_histories#update', as: 'borrow_history_update'
+
+  # ランキング
+  get 'borrow/ranking' => 'borrow_histories#ranking', as: 'borrow_hisotory_ranking'
 
   devise_for :users, :controllers => {
     confirmations: 'users/confirmations',
