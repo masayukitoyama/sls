@@ -1,7 +1,8 @@
 class AmazonService
 
   def get_book_search_results(params)
-    if params[:keyword]
+    book_search_results = Array.new
+    if params[:keyword].present?
       res = Amazon::Ecs.item_search(
           params[:keyword],
           search_index:  'Books',
@@ -10,10 +11,9 @@ class AmazonService
           country:  'jp',
           power: "Not kindle"
         )
-      book_search_results = Array.new
       res.items.each do |item|
         book_hash = Hash.new
-        book_hash[:search_from] = "amazon"
+        book_hash[:search_from] = AWSDATA
         book_hash[:asin] = item.get('ASIN')
         item_attributes = item.get_hash('ItemAttributes')
         book_hash[:isbn_10] = item_attributes["ISBN"]
@@ -24,7 +24,7 @@ class AmazonService
         book_hash[:detail_page_url] = item.get("DetailPageURL")
         book_search_results << book_hash
       end
-      book_search_results
     end
+    book_search_results
   end
 end
