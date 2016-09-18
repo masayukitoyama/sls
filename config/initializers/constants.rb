@@ -30,3 +30,10 @@ RETURN_DAYS = [
   {id: 1, label: "2週間後"},
   {id: 2, label: "1ヶ月後"}
 ]
+
+# 返却状態
+RETURN_STATUS = [
+  {status: 0, label: "返却済み"},
+  {status: 1, label: "貸し出し中"},
+  {status: 2, label: "返却期限超過"},
+]

@@ -17,11 +17,17 @@
                 <table id="borrow-history-table-1" class="table table-responsive table-striped table-hover">
                   <thead>
                     <tr>
-                      <th>
+                      <th style="width: 20%">
                         名前
                       </th>
-                      <th>
-                        メールアドレス
+                      <th style="width: 50%">
+                        貸し出し書籍
+                      </th>
+                      <th style="width: 15%">
+                        返却期限日
+                      </th>
+                      <th style="width: 15%">
+                        返却状態
                       </th>
                     </tr>
                   </thead>
@@ -29,13 +35,16 @@
                     <% @borrow_histories.each do |borrow_history| %>
                       <tr class="cursor-pointer" v-on:click='showEditModal("<%= borrow_history.id %>")'>
                         <td>
-                          <%= borrow_history.user_id %>
+                          <%= borrow_history.user.user_name %>
                         </td>
                         <td>
-                          <%= borrow_history.book_id %>
+                          <%= borrow_history.book.title %>
                         </td>
                         <td>
                           <%= borrow_history.return_limit_date %>
+                        </td>
+                        <td>
+                          <%= get_return_status_label(borrow_history.return_status) %>
                         </td>
                       </tr>
                     <% end %>

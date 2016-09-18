@@ -1,17 +1,24 @@
 Rails.application.routes.draw do
-
-  resources :borrow_histories
   namespace :api, { format: 'json' } do
     post 'users' => 'users#create'
     put  'user/:id' => 'users#update'
   end
 
+  # 利用者一覧
   get '/users' => 'users#index', as: 'users'
-  get '/books' => 'books#index', as: 'books'
-  get '/book/new' => 'books#new', as: 'book_new'
-  get '/book/search' => 'books#search', as: 'book_search'
-  get '/book/:id' => 'books#show', as: 'book_detail'
+
+  # 書籍
+  get 'books' => 'books#index', as: 'books'
+  get 'book/new' => 'books#new', as: 'book_new'
+  get 'book/search' => 'books#search', as: 'book_search'
+  get 'book/:id' => 'books#show', as: 'book_detail'
   post 'books' => 'books#create', as: 'book_create'
+
+  # 貸し出し
+  get '/borrow_histories' => 'borrow_histories#index', as: 'borrow_histories'
+  get '/borrow/:id' => 'borrow_histories#new', as: 'borrow_history_new'
+  post '/borrow' => 'borrow_histories#create', as: 'borrow_history_create'
+  put '/borrow/:id' => 'borrow_histories#update', as: 'borrow_history_update'
 
   devise_for :users, :controllers => {
     confirmations: 'users/confirmations',

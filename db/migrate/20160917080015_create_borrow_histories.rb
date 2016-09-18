@@ -4,6 +4,7 @@ class CreateBorrowHistories < ActiveRecord::Migration
       t.integer :user_id
       t.integer :book_id
       t.date    :return_limit_date
+      t.integer :return_status, default: 1
       t.timestamps null: false
     end
   end

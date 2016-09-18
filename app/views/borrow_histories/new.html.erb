@@ -1,7 +1,7 @@
 <div class="content-header-outer">
   <section class="content-header">
     <h1>
-      書籍情報
+      借りる
     </h1>
   </section>
 </div>
@@ -12,31 +12,25 @@
         <%= form_tag(borrow_history_create_path, method: "POST", class: "form") do %>
           <input type="hidden" name="book_id" value="<%= @book[:id] %>">
           <div class="box-body">
-            <div class="form-group col-md-4 text-center">
+            <div class="form-group col-md-4 text-center padding-top-20">
               <%= image_tag("#{@book[:image_url]}") %>
             </div>
             <div class="form-group col-md-8">
               <label for="inputTitle" class="col-md-2 control-label">タイトル<span class="asterisk">*</span></label>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <input type="text" class="form-control" name="title" value="<%= @book[:title] %>" readonly="true">
                 <p class="help-block">You should really write something here</p>
               </div>
             </div>
             <div class="form-group col-md-8">
               <label for="inputAuthor" class="col-md-2 control-label">著者<span class="asterisk">*</span></label>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <input type="text" class="form-control" name="author" value="<%= @book[:author] %>" eadonly="true">
               </div>
             </div>
             <div class="form-group col-md-8">
-              <label for="inputLimitDate" class="col-md-2 control-label">貸し出し期間</label>
-              <div class="col-md-4">
-                <input type="text" class="form-control" name="return_limit_date" value="<%= @book[:return_day_type] %>" readonly="true">
-              </div>
-            </div>
-            <div class="form-group col-md-8">
               <label for="inputLimitDate" class="col-md-2 control-label">返却期限</label>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <input type="text" class="form-control" name="return_limit_date" value="<%= calc_date(@book[:return_day_type]) %>" readonly="true">
               </div>
             </div>

@@ -65,6 +65,7 @@
                       <%= link_to "#{book_search_result[:title]}", "#{book_search_result[:detail_page_url]}", target: "_blank"  %>
                     </div>
                     <div class="author">
+                      <label class="font-bold">著者：</label>
                       <%= book_search_result[:author] %>
                     </div>
                     <div class="isbn_10">
@@ -76,6 +77,10 @@
                     <% if book_search_result[:search_from] == AWSDATA %>
                       <div class="new-btn">
                         <%= link_to "データ登録", book_new_path(book: book_search_result), class: "btn btn-info" %>
+                      </div>
+                    <% else %>
+                      <div class="new-btn">
+                        <%= link_to "借りる", borrow_history_new_path(book_search_result[:id]), class: "btn btn-info" %>
                       </div>
                     <% end %>
                 </li>
