@@ -22,15 +22,17 @@ class @BooksController
 
     $('#search_from_aws_data').on('ifChecked', ->
       $('.key').attr('disabled', '')
+      $('.key').css('background-color', '#dcdcdc')
       $('.keyword').focus()
     )
 
     $('#search_from_exist_data').on('ifChecked', ->
+      $('.key').css('background-color', '')
       $('.key').removeAttr('disabled')
       $('.key').focus()
     )
 
     $('#data-search-btn').on('click', (e)->
       $('#data-search-btn').attr('disabled', '')
-      window.setTimeout( "$('#book-search-form').submit()", 3000 );
+      window.setTimeout( "$('#book-search-form').submit()", 1000 );
     )

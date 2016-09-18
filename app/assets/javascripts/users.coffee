@@ -25,7 +25,6 @@ class @UsersController
           this.setViewDate()
           this.resetModalData()
 
-
         setViewDate: ->
           this.users = gon.users
           this.authority_type = Constants.AUTHORITY_TYPE
@@ -108,7 +107,7 @@ class @UsersController
             id: this.modaldata.id
             user_name: this.modaldata.user_name
             email: this.modaldata.email
-            authority_type: this.modaldata.authority_type
+            authority_type: this.modaldata.authority_type.id
           resource.updateUser params, (data) ->
             $('#confirmModal').modal('hide')
             if data.errors
