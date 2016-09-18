@@ -23,19 +23,21 @@ class BooksController < ApplicationController
     @book = Book.new(get_book_params)
     if @book.valid?
       @book.save
-      redirect_to books_path
+      redirect_to book_search_path
     end
   end
 
   private
     def get_book_params
-      params.permit(:isbn_10, :isbn_13, :asin, :title, :author, :return_day_type, :image_url)
+      params.permit(:isbn_10, :isbn_13, :asin, :title, :author, :return_day_type, :image_url, :detail_page_url)
     end
+
     def search_book_from_data
       @book_search_results = Array.new
       if params[:search_from] == EXISTDATA
         # DBから検索
-        @book_search_results = Book.get_data_from_search_params(params)
+        search_results = Book.get_data_from_search_params(params)
+        @book_search_results = BookService.set_book_search_results(search_results)
       elsif params[:search_from] == AWSDATA
         # Amazonから検索
         amazon_service = AmazonService.new

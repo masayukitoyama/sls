@@ -11,18 +11,18 @@ class AmazonService
           power: "Not kindle"
         )
       book_search_results = Array.new
-      item_hash = Hash.new
       res.items.each do |item|
-        item_hash[:search_from] = "amazon"
-        item_hash[:asin] = item.get('ASIN')
+        book_hash = Hash.new
+        book_hash[:search_from] = "amazon"
+        book_hash[:asin] = item.get('ASIN')
         item_attributes = item.get_hash('ItemAttributes')
-        item_hash[:isbn_10] = item_attributes["ISBN"]
-        item_hash[:isbn_13] = item_attributes["EAN"]
-        item_hash[:title] = item_attributes["Title"]
-        item_hash[:author] = item_attributes["Author"]
-        item_hash[:image_url] = item.get_hash("MediumImage")["URL"] if item.get_hash("MediumImage")
-        item_hash[:detail_page_url] = item.get("DetailPageURL")
-        book_search_results << item_hash
+        book_hash[:isbn_10] = item_attributes["ISBN"]
+        book_hash[:isbn_13] = item_attributes["EAN"]
+        book_hash[:title] = item_attributes["Title"]
+        book_hash[:author] = item_attributes["Author"]
+        book_hash[:image_url] = item.get_hash("MediumImage")["URL"] if item.get_hash("MediumImage")
+        book_hash[:detail_page_url] = item.get("DetailPageURL")
+        book_search_results << book_hash
       end
       book_search_results
     end

@@ -7,6 +7,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :title
       t.string :author
       t.text   :image_url
+      t.text   :detail_page_url
       t.integer   :return_day_type
       t.datetime :deleted_at
       t.timestamps null: false

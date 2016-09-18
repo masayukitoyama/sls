@@ -14,6 +14,7 @@
           <input type="hidden" name="isbn_13" value="<%= @book[:isbn_13] %>">
           <input type="hidden" name="asin" value="<%= @book[:asin] %>">
           <input type="hidden" name="image_url" value="<%= @book[:image_url] %>">
+          <input type="hidden" name="detail_page_url" value="<%= @book[:detail_page_url] %>">
           <div class="box-body">
             <div class="form-group col-md-4 text-center padding-top-20">
               <%= image_tag("#{@book[:image_url]}") %>

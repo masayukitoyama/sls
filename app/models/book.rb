@@ -13,7 +13,7 @@ class Book < ActiveRecord::Base
 
   def self.get_data_from_search_params(params)
     key = params[:key]
-    self.where(key.to_sym => params[:keyword])
+    search_books = self.where("books.#{key} LIKE ?", "%" + params[:keyword] + "%")
   end
 
 end
