@@ -6,10 +6,8 @@ class BorrowHistoriesController < ApplicationController
   end
 
   def create
-    @borrow_history = BorrowHistory.new
+    @borrow_history = BorrowHistory.new(get_borrow_params)
     @borrow_history.user_id = current_user.id
-    @borrow_history.book_id = params[:book_id]
-    @borrow_history.return_limit_date = params[:return_limit_date]
     if @borrow_history.valid?
       @borrow_history.save
     end
@@ -17,12 +15,12 @@ class BorrowHistoriesController < ApplicationController
   end
 
   def ranking
-    
+
   end
 
   private
     def get_borrow_params
-      params.permit(:book_id, :return_day_type)
+      params.permit(:book_id, :return_day_type, :return_limit_date)
     end
 
 end
