@@ -1239,7 +1239,7 @@ a:focus {
   border-radius: 0;
   box-shadow: none;
   border-color: #d2d6de;
-  font-size: 12px !important;
+  font-size: 14px !important;
   padding: 6px !important;
 }
 .form-control:focus {

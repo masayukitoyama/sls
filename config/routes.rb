@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/book/new' => 'books#new', as: 'book_new'
   get '/book/search' => 'books#search', as: 'book_search'
   get '/book/detail' => 'books#show', as: 'book_detail'
+  post 'books' => 'books#create', as: 'book_create'
 
   devise_for :users, :controllers => {
     confirmations: 'users/confirmations',
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  root to: 'users#index'
+  root to: 'books#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

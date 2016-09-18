@@ -1,4 +1,5 @@
 $(document).on 'ready page:load', ->
+
   $body = $("body")
   controller = _.str.classify($body.data("controller-name") + "-controller")
   action = $body.data("action-name")

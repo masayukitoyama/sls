@@ -23,3 +23,10 @@ AUTHORITY_TYPE = [
   {id: 1, label: "閲覧者", value: "view"},
   {id: 2, label: "通常利用者", value: "normal"}
 ]
+
+# 返却期間
+RETURN_DAYS = [
+  {id: 0, label: "1週間後"},
+  {id: 1, label: "2週間後"},
+  {id: 2, label: "1ヶ月後"}
+]

@@ -10,10 +10,10 @@ class AmazonService
           country:  'jp',
           power: "Not kindle"
         )
-      binding.pry
       book_search_results = Array.new
       item_hash = Hash.new
       res.items.each do |item|
+        item_hash[:search_from] = "amazon"
         item_hash[:asin] = item.get('ASIN')
         item_attributes = item.get_hash('ItemAttributes')
         item_hash[:isbn_10] = item_attributes["ISBN"]

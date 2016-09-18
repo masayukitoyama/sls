@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:edit, :update, :destroy]
 
   def index
     @recommend_books = Book.get_recommend_books
@@ -16,29 +16,21 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book = Book.new
+    @book = params[:book]
   end
 
   def create
-    @book = Book.new(book_params)
-
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
-        format.json { render :show, status: :created, location: @book }
-      else
-        format.html { render :new }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
+    @book = Book.new(get_book_params)
+    if @book.valid?
+      @book.save
+      redirect_to books_path
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_book
-      @book = Book.find(params[:id])
+    def get_book_params
+      params.permit(:isbn_10, :isbn_13, :asin, :title, :author, :return_day_type, :image_url)
     end
-
     def search_book_from_data
       @book_search_results = Array.new
       if params[:search_from] == EXISTDATA

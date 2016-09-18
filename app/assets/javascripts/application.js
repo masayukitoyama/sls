@@ -18,6 +18,8 @@
 //= require ripples.js
 //= require ripples.min.js
 //= require vue.min.js
+//= require bootstrap-datepicker.js
+//= require bootstrap-datepicker.ja.min.js
 //= require iCheck/icheck.js
 //= require chartjs/Chart.js
 //= require slimScroll/jquery.slimscroll.js
