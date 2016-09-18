@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def jp_date(datetime)
+    datetime.strftime('%Y-%m-%d')
+  end
+
   def calc_date(return_day_type)
     today = Date.today
     case return_day_type

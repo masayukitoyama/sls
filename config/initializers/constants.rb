@@ -31,7 +31,7 @@ RETURN_DAYS = [
 ]
 # 返却状態
 RETURN_STATUS = [
-  {status: 0, label: "返却済み"},
-  {status: 1, label: "貸し出し中"},
+  {status: 0, label: "返却済"},
+  {status: 1, label: "貸出中"},
   {status: 2, label: "返却期限超過"},
 ]

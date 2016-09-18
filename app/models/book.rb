@@ -12,7 +12,7 @@ class Book < ActiveRecord::Base
 
   def self.get_data_from_search_params(params)
     key = params[:key]
-    search_books = self.where("books.#{key} LIKE ?", "%" + params[:keyword] + "%")
+    search_books = self.where("books.#{key} LIKE ?", "%" + params[:keyword] + "%").order(isbn_13: :asc)
   end
 
   def self.count_book_stock(book)

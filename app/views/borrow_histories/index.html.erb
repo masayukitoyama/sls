@@ -14,19 +14,22 @@
             <div class="box-body">
               <%= render 'search_form' %>
               <% if @borrow_histories.present? %>
-                <table id="borrow-history-table-1" class="table table-responsive table-striped table-hover">
+                <table id="borrow-history-table-1" class="table table-bordered table-striped table-hover dataTable">
                   <thead>
                     <tr>
                       <th style="width: 20%">
                         名前
                       </th>
-                      <th style="width: 50%">
+                      <th style="width: 45%">
                         貸出書籍
                       </th>
-                      <th style="width: 15%">
+                      <th style="width: 12%">
+                        貸出日
+                      </th>
+                      <th style="width: 12%">
                         返却期限日
                       </th>
-                      <th style="width: 15%">
+                      <th style="width: 12%">
                         返却状態
                       </th>
                     </tr>
@@ -39,6 +42,9 @@
                         </td>
                         <td>
                           <%= borrow_history.book.title %>
+                        </td>
+                        <td>
+                          <%= jp_date(borrow_history.created_at) %>
                         </td>
                         <td>
                           <%= borrow_history.return_limit_date %>
