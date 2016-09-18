@@ -20,6 +20,7 @@ class BooksController < ApplicationController
   def search
     @book_search_menu = MENU_ACTIVE
     @book_search_results = search_book_from_data()
+    gon.user = current_user
   end
 
   def new

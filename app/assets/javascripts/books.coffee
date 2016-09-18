@@ -36,3 +36,17 @@ class @BooksController
       $('#data-search-btn').attr('disabled', '')
       window.setTimeout( "$('#book-search-form').submit()", 1000 );
     )
+
+    new Vue
+      el: "#bookSearchResult"
+      data:
+        book_id: ""
+        user_id: ""
+      created: ->
+        this.init()
+      methods:
+        init: ->
+          this.user_id = gon.user.id
+        onLikeBtnClicked: (id) ->
+          this.book_id = id
+          

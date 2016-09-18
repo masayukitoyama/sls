@@ -17,6 +17,7 @@ class BookService
       book_hash[:total_stock] = Book.count_book_stock(search_book)
       book_hash[:borrow_count] = BorrowHistory.count_book_borrow(search_book)
       book_hash[:latest_book_history] = BorrowHistory.get_latest_history_by_book_id(search_book.id)
+      book_hash[:likes] = Like.get_count_by_book_id(search_book.id)
       book_search_results << book_hash
     end
     book_search_results
