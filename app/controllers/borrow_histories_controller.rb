@@ -1,15 +1,8 @@
 class BorrowHistoriesController < ApplicationController
 
   def index
-    unless viewable_borrow_history?(current_user)
-      return render_404
-    end
     @borrow_histories = BorrowHistory.get_all_order_limit_date_asc
     @borrow_history_menu = MENU_ACTIVE
-  end
-
-  def new
-    @book = Book.find_by(id: params[:id])
   end
 
   def create

@@ -80,7 +80,7 @@
                       </div>
                     <% elsif book_search_result[:search_from] == EXISTDATA %>
                       <div class="new-btn">
-                        <%= link_to "借りる", borrow_history_new_path(book_search_result[:id]), class: "btn btn-info" %>
+                        <%= link_to "借りる", book_detail_path(book_search_result[:id]), class: "btn btn-info" %>
                       </div>
                     <% end %>
                 </li>

@@ -40,9 +40,19 @@
                 <input type="text" class="form-control" name="return_limit_date" value="<%= calc_date(@book[:return_day_type]) %>" readonly="true">
               </div>
             </div>
+            <div class="form-group col-md-8 float-right text-right">
+              <label for="inputStock" class="col-md-2 control-label">在庫数</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" name="return_limit_date" value="<%= @total_stock %>冊(貸出中：<%= @borrow_count %>冊)" disabled>
+              </div>
+            </div>
           </div>
           <div class="box-footer">
-            <button type="submit" class="btn btn-info" id="borrowBtn">借りる</button>
+            <% if @total_stock > @borrow_count %>
+              <button type="submit" class="btn btn-info" id="borrowBtn">借りる</button>
+            <% else %>
+              <label>※申し訳ございません。ただいま全て貸出中です。</label>
+            <% end %>
           </div>
         </div>
       <% end %>

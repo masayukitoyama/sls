@@ -8,6 +8,8 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find_by(id: params[:id])
+    @total_stock = Book.count_book_stock(@book)
+    @borrow_count = BorrowHistory.count_book_borrow(@book)
   end
 
   def search
