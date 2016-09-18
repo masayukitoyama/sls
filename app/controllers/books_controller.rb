@@ -11,15 +11,15 @@ class BooksController < ApplicationController
     unless @book
       return render_404
     end
-    @total_stock = Book.count_book_stock(@book)
-    @borrow_count = BorrowHistory.count_book_borrow(@book)
-    @book_history = BorrowHistory.find_by(book_id: params[:id])
+    @total_stock = Book.count_book_stock(book)
+    @borrow_count = BorrowHistory.count_book_borrow(book)
+    @latest_book_history = BorrowHistory.get_latest_history_by_book_id(params[:id])
     @is_borrowing = is_borrowing?
   end
 
   def search
     @book_search_menu = MENU_ACTIVE
-    search_book_from_data()
+    @book_search_results = search_book_from_data()
   end
 
   def new
@@ -53,23 +53,24 @@ class BooksController < ApplicationController
     end
 
     def search_book_from_data
-      @book_search_results = Array.new
+      book_search_results = Array.new
       if params[:search_from] == EXISTDATA
         # DBから検索
         search_results = Book.get_data_from_search_params(params)
-        @book_search_results = BookService.set_book_search_results(search_results)
+        book_search_results = BookService.set_book_search_results(search_results)
       elsif params[:search_from] == AWSDATA
         # Amazonから検索
         amazon_service = AmazonService.new
-        @book_search_results = amazon_service.get_book_search_results(params)
+        book_search_results = amazon_service.get_book_search_results(params)
       end
+      book_search_results
     end
 
     def is_borrowing?
-      unless @book_history
+      unless latest_book_history
         return false
       end
-      if @total_stock <= @borrow_count || @book_history.return_status > 0
+      if total_stock <= borrow_count || latest_book_history.return_status > 0
         return true
       end
       false

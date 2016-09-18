@@ -14,6 +14,9 @@ class BookService
       book_hash[:image_url] = search_book.image_url
       book_hash[:detail_page_url] = search_book.detail_page_url
       book_hash[:return_day_type] = search_book.return_day_type
+      book_hash[:total_stock] = Book.count_book_stock(search_book)
+      book_hash[:borrow_count] = BorrowHistory.count_book_borrow(search_book)
+      book_hash[:latest_book_history] = BorrowHistory.get_latest_history_by_book_id(search_book.id)
       book_search_results << book_hash
     end
     book_search_results

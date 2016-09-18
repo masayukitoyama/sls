@@ -19,7 +19,7 @@
               <div class="form-group text-center">
                 <label class="return-status">
                   <% if @is_borrowing %>
-                    <%= return_status_label(@book_history.return_status) %>
+                    <%= return_status_label(@latest_book_history.return_status) %>
                   <% else %>
                     貸出可能
                   <% end %>
@@ -28,34 +28,34 @@
             </div>
             <div class="col-md-7">
               <div class="form-group col-md-8">
-                <label for="inputTitle" class="col-md-4 control-label">タイトル<span class="asterisk">*</span></label>
-                <div class="col-md-8">
+                <label for="inputTitle" class="col-md-3 control-label">タイトル<span class="asterisk">*</span></label>
+                <div class="col-md-9">
                   <input type="text" class="form-control" name="title" value="<%= @book[:title] %>" readonly="true">
+                </div>
+              </div>
+              <div class="form-group col-md-8">
+                <label for="inputAuthor" class="col-md-3 control-label">著者<span class="asterisk">*</span></label>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" name="author" value="<%= @book[:author] %>" eadonly="true">
                   <p class="help-block">You should really write something here</p>
                 </div>
               </div>
               <div class="form-group col-md-8">
-                <label for="inputAuthor" class="col-md-4 control-label">著者<span class="asterisk">*</span></label>
-                <div class="col-md-8">
-                  <input type="text" class="form-control" name="author" value="<%= @book[:author] %>" eadonly="true">
-                </div>
-              </div>
-              <div class="form-group col-md-8">
-                <label for="inputLimitDate" class="col-md-4 control-label">貸出期間</label>
-                <div class="col-md-8">
+                <label for="inputLimitDate" class="col-md-3 control-label">貸出期間</label>
+                <div class="col-md-9">
                   <input type="text" class="form-control" name="return_limit_date" value="<%= return_day_label(@book[:return_day_type]) %>" readonly="true">
                 </div>
               </div>
               <div class="form-group col-md-8">
-                <label for="inputLimitDate" class="col-md-4 control-label">返却期限</label>
-                <div class="col-md-8">
+                <label for="inputLimitDate" class="col-md-3 control-label">返却期限</label>
+                <div class="col-md-9">
                   <input type="text" class="form-control" name="return_limit_date" value="<%= calc_date(@book[:return_day_type]) %>" readonly="true">
                 </div>
               </div>
               <div class="form-group col-md-8">
-                <label for="inputStock" class="col-md-4 control-label">在庫数</label>
-                <div class="col-md-8">
-                  <input type="text" class="form-control" name="return_limit_date" value="<%= @total_stock %>冊(貸出中：<%= @borrow_count %>冊)" disabled>
+                <label for="inputStock" class="col-md-3 control-label">在庫数</label>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" name="return_limit_date" value="<%= @total_stock %>冊(貸出中：<%= @borrow_count %>冊)" readonly>
                 </div>
               </div>
             </div>

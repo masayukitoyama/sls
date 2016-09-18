@@ -61,28 +61,32 @@
                       <%= link_to image_tag("#{book_search_result[:image_url]}"), book_detail_path("#{book_search_result[:id]}") %>
                     <% end %>
                   </div>
-                    <div class="title margin-top-20">
-                      <%= link_to "#{book_search_result[:title]}", "#{book_search_result[:detail_page_url]}", target: "_blank"  %>
+                  <div class="title margin-top-20">
+                    <%= link_to "#{book_search_result[:title]}", "#{book_search_result[:detail_page_url]}", target: "_blank"  %>
+                  </div>
+                  <div class="author margin-top-10">
+                    <label class="font-bold">著者：</label>
+                    <%= book_search_result[:author] %>
+                  </div>
+                  <div class="isbn_10">
+                    <label class="font-bold">ISBN-10:</label>&nbsp;<%= book_search_result[:isbn_10] %>
+                  </div>
+                  <div class="isbn_13">
+                    <label class="font-bold">ISBN-13:</label>&nbsp;<%= book_search_result[:isbn_13] %>
+                  </div>
+                  <% if book_search_result[:search_from] == AWSDATA && current_user.admin? %>
+                    <div class="new-btn">
+                      <%= link_to "データ登録", book_new_path(book: book_search_result), class: "btn btn-info" %>
                     </div>
-                    <div class="author margin-top-10">
-                      <label class="font-bold">著者：</label>
-                      <%= book_search_result[:author] %>
+                  <% elsif book_search_result[:search_from] == EXISTDATA && enable_borrow?(book_search_result) %>
+                    <div class="borrow-btn">
+                      <%= link_to "借りる", book_detail_path(book_search_result[:id]), class: "btn btn-info" %>
                     </div>
-                    <div class="isbn_10">
-                      <label class="font-bold">ISBN-10:</label>&nbsp;<%= book_search_result[:isbn_10] %>
+                  <% else %>
+                    <div class="message text-center">
+                      <label class="font-bold">貸出中</label>
                     </div>
-                    <div class="isbn_13">
-                      <label class="font-bold">ISBN-13:</label>&nbsp;<%= book_search_result[:isbn_13] %>
-                    </div>
-                    <% if book_search_result[:search_from] == AWSDATA && current_user.admin? %>
-                      <div class="new-btn">
-                        <%= link_to "データ登録", book_new_path(book: book_search_result), class: "btn btn-info" %>
-                      </div>
-                    <% elsif book_search_result[:search_from] == EXISTDATA %>
-                      <div class="new-btn">
-                        <%= link_to "借りる", book_detail_path(book_search_result[:id]), class: "btn btn-info" %>
-                      </div>
-                    <% end %>
+                  <% end %>
                 </li>
               <% end %>
             </ol>
