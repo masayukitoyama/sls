@@ -2,14 +2,19 @@ class BooksController < ApplicationController
 
   def index
     @recommend_books = Book.get_recommend_books
-    @books = Book.all
+    @books = Book.all.order(isbn_13: :asc)
     @book_menu = MENU_ACTIVE
   end
 
   def show
     @book = Book.find_by(id: params[:id])
+    unless @book
+      return render_404
+    end
     @total_stock = Book.count_book_stock(@book)
     @borrow_count = BorrowHistory.count_book_borrow(@book)
+    @book_history = BorrowHistory.find_by(book_id: params[:id])
+    @is_borrowing = is_borrowing?
   end
 
   def search
@@ -58,6 +63,16 @@ class BooksController < ApplicationController
         amazon_service = AmazonService.new
         @book_search_results = amazon_service.get_book_search_results(params)
       end
+    end
+
+    def is_borrowing?
+      unless @book_history
+        return false
+      end
+      if @total_stock <= @borrow_count || @book_history.return_status > 0
+        return true
+      end
+      false
     end
 
 end

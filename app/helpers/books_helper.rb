@@ -13,4 +13,12 @@ module BooksHelper
       end
     end
   end
+
+  def return_status_label(status)
+    if status > 0
+      return "貸出中"
+    else
+      return "貸出可能"
+    end
+  end
 end
