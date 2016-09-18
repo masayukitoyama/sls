@@ -25,7 +25,8 @@ class User < ActiveRecord::Base
   def update_user_info(params)
     update(
       user_name: params[:user_name],
-      email: params[:email]
+      email: params[:email],
+      authority_type: params[:authority_type].to_i
       )
   end
 

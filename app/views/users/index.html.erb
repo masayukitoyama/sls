@@ -30,6 +30,9 @@
                     <th>
                       メールアドレス
                     </th>
+                    <th>
+                      権限
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -40,6 +43,9 @@
                       </td>
                       <td>
                         <%= user.email %>
+                      </td>
+                      <td>
+                        <%= set_authority_type(user.authority_type) %>
                       </td>
                     </tr>
                   <% end %>

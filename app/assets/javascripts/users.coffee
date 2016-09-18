@@ -43,6 +43,11 @@ class @UsersController
             if type.id == authority_type_id
               return type.label
 
+        setAuthorityTypeId: (authority_type_value) ->
+          for type in this.authority_type
+            if type.value == authority_type_value
+              return type.id
+
         onAuthorityTypeSelectChenged: ->
           this.modaldata.authority_type.value = this.getAuthorityType(this.modaldata.authority_type.id)
 
@@ -53,7 +58,6 @@ class @UsersController
           $('#userModal').modal()
 
         showConfirmModal: ->
-          console.log this.modaldata.authority_type
           $('#userModal').modal('hide')
           $('#confirmModal').modal()
 
@@ -94,7 +98,8 @@ class @UsersController
           this.modaldata.id = editUser.id
           this.modaldata.user_name = editUser.user_name
           this.modaldata.email = editUser.email
-          this.modaldata.authority_type = editUser.authority_type
+          this.modaldata.authority_type.id = this.setAuthorityTypeId(editUser.authority_type)
+          this.modaldata.authority_type.value = this.getAuthorityType(this.modaldata.authority_type.id)
           this.is_edit = true
 
         updateUser: () ->

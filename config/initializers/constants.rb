@@ -16,3 +16,10 @@ BOOK_COLUMN = [
   {key: "title", value: "書籍名"},
   {key: "author", value: "著者名"},
 ]
+
+# ユーザー権限
+AUTHORITY_TYPE = [
+  {id: 0, label: "管理者", value: "admin"},
+  {id: 1, label: "閲覧者", value: "view"},
+  {id: 2, label: "通常利用者", value: "normal"}
+]
