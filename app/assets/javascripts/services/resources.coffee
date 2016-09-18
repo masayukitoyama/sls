@@ -58,5 +58,13 @@ class @Resources
     @post(url, params, success, null)
 
   updateUser: (params, success) ->
-    url = "api/user/" + params.id
+    url = "/api/user/" + params.id
     @put(url, params, success, null)
+
+  createLike: (params, success) ->
+    url = "/api/likes"
+    @post(url, params, success, null)
+
+  createRequire: (params, success) ->
+    url = "/api/requires"
+    @post(url, params, success, null)

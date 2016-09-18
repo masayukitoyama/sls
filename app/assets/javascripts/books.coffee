@@ -14,6 +14,8 @@ class @BooksController
 
   search: ->
     that = this
+    resources = new Resources()
+
     $('input').iCheck
       checkboxClass: 'icheckbox_flat-green',
       radioClass: 'iradio_flat-green'
@@ -42,11 +44,57 @@ class @BooksController
       data:
         book_id: ""
         user_id: ""
+        likes: ""
+        requires: ""
+        asin: ""
+        title: ""
+        author: ""
+        image_url: ""
+        detail_page_url: ""
+
       created: ->
         this.init()
+
       methods:
         init: ->
           this.user_id = gon.user.id
+          this.likes = 0
+
         onLikeBtnClicked: (id) ->
           this.book_id = id
-          
+          this.submitLike()
+
+        onRequireBtnClicked: (book) ->
+          this.asin = book["asin"]
+          this.title = book["title"]
+          this.author = book["author"]
+          this.image_url = book["image_url"]
+          this.detail_page_url = book["detail_page_url"]
+          this.submitRequire()
+
+        submitLike: ->
+          that = this
+          params =
+            user_id: this.user_id
+            book_id: this.book_id
+
+          resources.createLike params, (data) ->
+            if data.errors
+              this.errors = data.errors
+            else
+              that.likes += 1
+
+        submitRequire: ->
+          that = this
+          params =
+            user_id: this.user_id
+            asin: this.asin
+            title: this.title
+            author: this.author
+            image_url: this.image_url
+            detail_page_url: this.detail_page_url
+          resources.createRequire params, (data) ->
+            if data.errors
+              this.errors = data.errors
+            else
+              that.requires += 1

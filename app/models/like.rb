@@ -1,5 +1,6 @@
 class Like < ActiveRecord::Base
 
+  acts_as_paranoid
   belongs_to :user
   belongs_to :book
 
@@ -12,5 +13,5 @@ class Like < ActiveRecord::Base
     self.where_book_id(book_id).count()
   end
 
-  
+
 end

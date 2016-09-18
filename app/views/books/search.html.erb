@@ -77,9 +77,9 @@
                   <% if book_search_result[:search_from] == AWSDATA && current_user.admin? %>
                     <div class="new-btn" style="inline-block;">
                       <%= link_to "登録", book_new_path(book: book_search_result), class: "btn btn-info btn-sm" %>
-                      <div class="require-btn" v-on:click="onRequireBtnClicked(<%= book_search_result[:id] %>)">
+                      <div class="require-btn" v-on:click="onRequireBtnClicked(<%= book_search_result.to_json %>)">
                         <a class="btn btn-app">
-                          <span class="badge bg-teal">67</span>
+                          <span class="badge bg-teal"><%= book_search_result[:total_requires] %></span>
                           <i class="fa fa-inbox"></i>Want!
                         </a>
                       </div>

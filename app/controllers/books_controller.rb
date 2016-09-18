@@ -63,6 +63,7 @@ class BooksController < ApplicationController
         # Amazonから検索
         amazon_service = AmazonService.new
         book_search_results = amazon_service.get_book_search_results(params)
+        book_search_results = Require.add_total_requires(book_search_results)
       end
       book_search_results
     end

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   namespace :api, { format: 'json' } do
     post 'users' => 'users#create'
     put  'user/:id' => 'users#update'
+    post 'likes' => 'likes#create'
+    post 'requires' => 'requires#create'
   end
 
   # 利用者一覧

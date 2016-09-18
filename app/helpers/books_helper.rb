@@ -24,7 +24,7 @@ module BooksHelper
 
   def enable_borrow?(book_hash)
     unless book_hash[:latest_book_history]
-      return false
+      return true
     end
     if book_hash[:total_stock] <= book_hash[:borrow_count] || book_hash[:latest_book_history].return_status > 0
       return true
