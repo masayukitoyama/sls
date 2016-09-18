@@ -19,10 +19,13 @@ class @BooksController
       radioClass: 'iradio_flat-green'
     $('#search_from_exist_data').iCheck('check')
 
+
     $('#search_from_aws_data').on('ifChecked', ->
-      $('#search_key').hide()
+      $('.key').attr('disabled', '')
+      $('.keyword').focus()
     )
 
     $('#search_from_exist_data').on('ifChecked', ->
-      $('#search_key').show()
+      $('.key').removeAttr('disabled')
+      $('.key').focus()
     )

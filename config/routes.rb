@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/books' => 'books#index', as: 'books'
   get '/book/new' => 'books#new', as: 'book_new'
   get '/book/search' => 'books#search', as: 'book_search'
+  get '/book/detail' => 'books#show', as: 'book_detail'
 
   devise_for :users, :controllers => {
     confirmations: 'users/confirmations',
