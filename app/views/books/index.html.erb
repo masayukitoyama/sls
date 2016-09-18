@@ -2,7 +2,7 @@
   <div>
     <section class="content book-block-1">
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-sm-12">
           <div class="box box-default">
             <div class="box-header">
               <p class="font-bold font-size-20">おすすめ書籍</p>
@@ -10,39 +10,73 @@
             <div class="box-body">
               <div class="swiper-container">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <% if @recommend_books.present? %>
-                      <% @recommend_books.each do |recommend_book| %>
-                        <%= recommend_book.image_url %>
-                      <% end %>
+                  <% if @recommend_books.present? %>
+                    <% @recommend_books.each do |recommend_book| %>
+                      <div class="swiper-slide">
+                        <div class="book-image col-sm-4 text-center">
+                          <%= link_to image_tag(recommend_book.image_url), book_detail_path(recommend_book.id) %>
+                        </div>
+                        <div class="book-info col-sm-4">
+                          <div class="title text-left">
+                            <%= recommend_book.title %>
+                          </div>
+                          <div class="author text-left">
+                            <%= recommend_book.author %>
+                          </div>
+                        </div>
+                      </div>
                     <% end %>
-                  </div>
-                  <div class="swiper-slide">
-                    SlideImage1
-                  </div>
-                  <div class="swiper-slide">
-                    SlideImage2
-                  </div>
-                  <div class="swiper-slide">
-                    SlideImage3
-                  </div>
-                  <div class="swiper-slide">
-                    SlideImage4
-                  </div>
-                  <div class="swiper-slide">
-                    SlideImage5
-                  </div>
+                  <% end %>
                 </div>
-                <!-- Add Pagination -->
                 <div class="swiper-pagination"></div>
-                <!-- Add Arrows -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
               </div>
-            </div><!-- box-body -->
-          </div><!-- box -->
+            </div>
+          </div>
+          <div class="box box-default">
+            <div class="box-header">
+              <p class="font-bold font-size-20">在庫書籍</p>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="book-stock-list col-sm-12">
+                  <% if @books.present? %>
+                      <% @books.each do |book| %>
+                        <li class="book-stock-result col-sm-4">
+                          <div class="book-image">
+                            <% if book[:search_from] == AWSDATA %>
+                              <%= image_tag("#{book[:image_url]}") %>
+                            <% else %>
+                              <%= link_to image_tag("#{book[:image_url]}"), book_detail_path("#{book[:id]}") %>
+                            <% end %>
+                          </div>
+                          <div class="title">
+                            <%= link_to "#{book[:title]}", "#{book[:detail_page_url]}", target: "_blank"  %>
+                          </div>
+                          <div class="author">
+                            <label class="font-bold">著者名:</label>&nbsp;<%= book[:author] %>
+                          </div>
+                          <div class="isbn_10">
+                            <label class="font-bold">ISBN-10:</label>&nbsp;<%= book[:isbn_10] %>
+                          </div>
+                          <div class="isbn_13">
+                            <label class="font-bold">ISBN-13:</label>&nbsp;<%= book[:isbn_13] %>
+                          </div>
+                        </li>
+                      <% end %>
+                    </ul>
+                  <% else %>
+                    <div class="col-sm-12 search_empty_msg">
+                      <p> <%= t('errors.messages.search_empty') %></p>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div><!-- row -->
+      </div>
     </section>
   </div>
 </div>

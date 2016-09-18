@@ -4,6 +4,7 @@ class BookService
     book_search_results = Array.new
     search_books.each do |search_book|
       book_hash = Hash.new
+      book_hash[:id] = search_book.id
       book_hash[:search_from] = EXISTDATA
       book_hash[:asin] = search_book.asin
       book_hash[:isbn_10] = search_book.isbn_10

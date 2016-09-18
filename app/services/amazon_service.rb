@@ -13,6 +13,7 @@ class AmazonService
         )
       res.items.each do |item|
         book_hash = Hash.new
+        book_hash[:id] = AWSDATA
         book_hash[:search_from] = AWSDATA
         book_hash[:asin] = item.get('ASIN')
         item_attributes = item.get_hash('ItemAttributes')

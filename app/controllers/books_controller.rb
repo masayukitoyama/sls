@@ -23,7 +23,7 @@ class BooksController < ApplicationController
     @book = Book.new(get_book_params)
     if @book.valid?
       @book.save
-      redirect_to book_search_path
+      redirect_to books_path
     end
   end
 

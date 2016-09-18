@@ -6,9 +6,7 @@ class Book < ActiveRecord::Base
   scope :where_asin, -> (asin) { where(asin: asin) }
 
   def self.get_recommend_books
-    recommend_book_ids = rand(3) + 1
     books = Book.all
-    books.where_id(recommend_book_ids)
   end
 
   def self.get_data_from_search_params(params)

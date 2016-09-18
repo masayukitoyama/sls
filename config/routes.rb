@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/books' => 'books#index', as: 'books'
   get '/book/new' => 'books#new', as: 'book_new'
   get '/book/search' => 'books#search', as: 'book_search'
-  get '/book/detail' => 'books#show', as: 'book_detail'
+  get '/book/:id' => 'books#show', as: 'book_detail'
   post 'books' => 'books#create', as: 'book_create'
 
   devise_for :users, :controllers => {
