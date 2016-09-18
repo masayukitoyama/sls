@@ -7,6 +7,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :title
       t.string :author
       t.text   :image_url
+      t.date   :default_limit_date
       t.datetime :deleted_at
       t.timestamps null: false
     end

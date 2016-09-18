@@ -29,6 +29,13 @@ class User < ActiveRecord::Base
       )
   end
 
-
-
+  def create_user(params)
+    self.user_name = params[:user_name]
+    self.email = params[:email]
+    self.password = params[:password]
+    self.authority_type = params[:authority_type].to_i
+    if self.valid?
+      self.save
+    end
+  end
 end

@@ -1,10 +1,8 @@
 class Api::UsersController < ApiApplicationController
 
   def create
-    @user = User.new(get_user_params)
-    if @user.valid?
-      @user.save
-    end
+    @user = User.new
+    @user.create_user(get_user_params)
   end
 
   def update
@@ -24,7 +22,7 @@ class Api::UsersController < ApiApplicationController
 
   private
     def get_user_params
-      params.permit(:user_name, :email, :password)
+      params.permit(:user_name, :email, :password, :authority_type)
     end
 
 end

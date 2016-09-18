@@ -2251,7 +2251,6 @@ a:focus {
 .btn-info {
   background-color: #00c0ef;
   border-color: #00acd6;
-  color: #fff !important;
 }
 .btn-info:hover,
 .btn-info:active,

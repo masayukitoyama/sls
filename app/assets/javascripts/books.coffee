@@ -29,3 +29,8 @@ class @BooksController
       $('.key').removeAttr('disabled')
       $('.key').focus()
     )
+
+    $('#data-search-btn').on('click', (e)->
+      $('#data-search-btn').attr('disabled', '')
+      window.setTimeout( "$('#book-search-form').submit()", 3000 );
+    )

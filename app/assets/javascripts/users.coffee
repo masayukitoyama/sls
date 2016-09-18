@@ -7,34 +7,44 @@ class @UsersController
       el: '#user-list'
       data:
         is_edit: false
-        new_modaldata:
-          user_name: ""
-          email: ""
-          password: ""
-          job_type: ""
         modaldata:
           user_name: ""
           email: ""
           password: ""
-          job_type: ""
+          authority_type:
+            id: ""
+            value: ""
         users: ""
-
+        authority_type: []
 
       created: ->
         this.init()
 
       methods:
         init: ->
+          this.setViewDate()
           this.resetModalData()
+
+
+        setViewDate: ->
           this.users = gon.users
+          this.authority_type = Constants.AUTHORITY_TYPE
 
         resetModalData: ->
           this.is_edit = false
           this.modaldata.user_name = ""
           this.modaldata.email = ""
           this.modaldata.password = ""
-          this.modaldata.job_type = ""
+          this.modaldata.authority_type.id = 0
+          this.modaldata.authority_type.value = this.getAuthorityType(this.modaldata.authority_type.id)
 
+        getAuthorityType: (authority_type_id) ->
+          for type in this.authority_type
+            if type.id == authority_type_id
+              return type.label
+
+        onAuthorityTypeSelectChenged: ->
+          this.modaldata.authority_type.value = this.getAuthorityType(this.modaldata.authority_type.id)
 
         onUserNewClicked: ->
           this.resetModalData()
@@ -43,6 +53,7 @@ class @UsersController
           $('#userModal').modal()
 
         showConfirmModal: ->
+          console.log this.modaldata.authority_type
           $('#userModal').modal('hide')
           $('#confirmModal').modal()
 
@@ -58,6 +69,7 @@ class @UsersController
             user_name: this.modaldata.user_name
             email: this.modaldata.email
             password: this.modaldata.password
+            authority_type: this.modaldata.authority_type.id
           resource.createUser params, (data) ->
             $('#confirmModal').modal('hide')
             if data.errors
@@ -82,6 +94,7 @@ class @UsersController
           this.modaldata.id = editUser.id
           this.modaldata.user_name = editUser.user_name
           this.modaldata.email = editUser.email
+          this.modaldata.authority_type = editUser.authority_type
           this.is_edit = true
 
         updateUser: () ->
@@ -90,6 +103,7 @@ class @UsersController
             id: this.modaldata.id
             user_name: this.modaldata.user_name
             email: this.modaldata.email
+            authority_type: this.modaldata.authority_type
           resource.updateUser params, (data) ->
             $('#confirmModal').modal('hide')
             if data.errors
