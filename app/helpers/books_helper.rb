@@ -27,8 +27,8 @@ module BooksHelper
       return true
     end
     if book_hash[:total_stock] <= book_hash[:borrow_count] || book_hash[:latest_book_history].return_status > 0
-      return true
+      return false
     end
-    false
+    true
   end
 end
