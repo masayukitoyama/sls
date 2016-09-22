@@ -17,9 +17,14 @@
           <i class="fa fa-search"></i> <span>書籍検索</span> <i class="fa fa-refresh pull-right"></i>
         <% end %>
       </li>
+      <li class="active">
+        <%= link_to borrow_histories_path do %>
+          <i class="fa fa-list-ol"></i>貸出履歴一覧
+        <% end %>
+      </li>
       <li class="treeview <%= @borrow_history_menu %>">
         <a href="">
-          <i class="fa fa-history"></i> <span>貸出履歴</span>
+          <i class="fa fa-pie-chart"></i> <span>分析データ</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
@@ -27,14 +32,19 @@
         <ul class="treeview-menu" style="display: none;">
           <li class="active">
             <%= link_to borrow_histories_path do %>
-              <i class="fa fa-list-ol"></i>貸出履歴一覧
+              <i class="fa fa-heart-o"></i>いいねランキング
             <% end %>
           </li>
-          <!-- <li class="active">
-            <%# link_to borrow_hisotory_ranking_path do %>
+          <li class="active">
+            <%= link_to borrow_hisotory_ranking_path do %>
+              <i class="fa fa-inbox"></i>要望書籍ランキング
+            <% end %>
+          </li>
+          <li class="active">
+            <%= link_to borrow_hisotory_ranking_path do %>
               <i class="fa fa-line-chart"></i>貸出履歴ランキング
-            <%# end %>
-          </li> -->
+            <% end %>
+          </li>
         </ul>
       </li>
     </ul>
