@@ -6,5 +6,6 @@ class CreateLikes < ActiveRecord::Migration
       t.datetime :deleted_at
       t.timestamps null: false
     end
+    add_index :likes, [:user_id, :book_id], unique: true
   end
 end

@@ -38,7 +38,7 @@
             <div class="form-group col-md-10" >
               <label for="inputAuthorityType" class="col-md-4 control-label">権限<span class="asterisk">*</span></label>
               <div class="col-md-8">
-                <select class="form-control" v-model="modaldata.authority_type.id" v-on:change="onAuthorityTypeSelectChenged">
+                <select class="form-control" v-model="modaldata.authority_type.id" v-on:change="onAuthorityTypeSelectChanged">
                   <option v-for="type in authority_type" value="{{type.id}}" v-bind:value="type.id">
                     {{type.label}}
                   </option>

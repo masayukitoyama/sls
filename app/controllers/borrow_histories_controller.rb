@@ -14,6 +14,13 @@ class BorrowHistoriesController < ApplicationController
     redirect_to borrow_histories_path
   end
 
+  def show
+    @book_history = BorrowHistory.find_by(id: params[:id])
+    unless @book_history
+      return render_404
+    end
+  end
+
   def ranking
 
   end

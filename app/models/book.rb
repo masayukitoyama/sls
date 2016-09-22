@@ -3,6 +3,7 @@ class Book < ActiveRecord::Base
   acts_as_paranoid
 
   has_many :borrow_histories
+
   scope :where_id, -> (id) { where(id: id) }
   scope :where_asin, -> (asin) { where(asin: asin) }
 
@@ -12,7 +13,7 @@ class Book < ActiveRecord::Base
 
   def self.get_data_from_search_params(params)
     key = params[:key]
-    search_books = self.where("books.#{key} LIKE ?", "%" + params[:keyword] + "%").order(isbn_13: :asc)
+    search_books = self.where("books.#{key} LIKE ?", "%" + params[:keyword] + "%").order(created_at: :desc)
   end
 
   def self.count_book_stock(book)

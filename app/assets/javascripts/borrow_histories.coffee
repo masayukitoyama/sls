@@ -1,3 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+class @BorrowHistoriesController
+
+  index: ->
+    new Vue
+      el: "#borrow-history"
+      methods:
+        showBookDetail: (book_history_id) ->
+          url = Utility.getHost() + '/borrow_history/' + book_history_id
+          window.location.href = url

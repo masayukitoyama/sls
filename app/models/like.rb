@@ -4,6 +4,7 @@ class Like < ActiveRecord::Base
   belongs_to :user
   belongs_to :book
 
+  validates :user_id, uniqueness: {message: "すでにlikeされています。", scope: [:book_id]}
   scope :join_book, -> { joins(:book) }
   scope :join_user, -> { joins(:user) }
   scope :where_user_id, -> (user_id) { where(user_id: user_id) }

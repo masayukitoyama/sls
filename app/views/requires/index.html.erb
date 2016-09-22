@@ -1,0 +1,64 @@
+<section class="content-header">
+  <h1>要望書籍ランキング</h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+    <li class="active">要望書籍ランキング</li>
+  </ol>
+</section>
+<div id="book-require">
+  <section class="content book-require-list-block-1">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="box">
+          <div class="box-body">
+            <div class="book-require-list">
+              <% if @book_requires.present? %>
+                <% @book_requires.each_with_index do |book_require, index| %>
+                  <div class="col-sm-12 margin-bottom-20">
+                    <div class="col-sm-1 margin-top-20">
+                      <%= index+1 %>位
+                    </div>
+                    <div class="col-sm-3 text-center">
+                      <%= image_tag("#{book_require.image_url}") %>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="col-sm-8 margin-top-20">
+                        <%= book_require.title %>
+                      </div>
+                      <div class="col-sm-8 margin-top-10">
+                        <%= book_require.author %>
+                      </div>
+                      <div class="col-sm-8 margin-top-10">
+                        要望数：&nbsp;<%= book_require.require_count %>票
+                      </div>
+                      <div class="col-sm-8 margin-top-10">
+                        <ul class="lowest-prices">
+                          <li class="lowest-new-price">
+                            <div class="list-item">
+                              <span class="text-bold font-size-16">新品最低価格</span>
+                              <br>
+                              <span><%= book_require.lowest_new_price %></span>
+                            </div>
+                          </li>
+                          <li class="lowest-used-price">
+                            <div class="list-item">
+                              <span class="text-bold font-size-16">中古最低価格</span>
+                              <br>
+                              <span><%= book_require.lowest_used_price %></span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% else %>
+                現在要望書籍はありません。
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

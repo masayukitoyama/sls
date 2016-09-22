@@ -2,7 +2,7 @@ class BooksController < ApplicationController
 
   def index
     @recommend_books = Book.get_recommend_books
-    @books = Book.all.order(isbn_13: :asc)
+    @books = Book.all.order(asin: :asc)
     @book_menu = MENU_ACTIVE
   end
 
@@ -37,7 +37,9 @@ class BooksController < ApplicationController
     @book = Book.new(get_book_params)
     if @book.valid?
       @book.save
-      redirect_to books_path
+      redirect_to book_search_path
+    else
+      render :new
     end
   end
 

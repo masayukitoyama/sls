@@ -80,28 +80,25 @@
                         <%= link_to "登録", book_new_path(book: book_search_result), class: "btn btn-info btn-sm" %>
                       <% end %>
                       <div class="require-btn" v-on:click="onRequireBtnClicked(<%= book_search_result.to_json %>)" >
-                        <a class="btn btn-app">
-                          <span class="badge bg-teal"><%= book_search_result[:total_requires] %></span>
-                          <i class="fa fa-inbox"></i>Want!
-                        </a>
+                        <button type="button" class="btn btn-default btn-sm">
+                          <i class="fa fa-star-o"></i>&nbsp;Want！&nbsp;<span class="badge bg-teal"><%= book_search_result[:likes] || 0 %></span>
+                        </button>
                       </div>
                     </div>
                   <% elsif book_search_result[:search_from] == EXISTDATA && enable_borrow?(book_search_result) %>
                     <%= link_to "借りる", book_detail_path(book_search_result[:id]), class: "btn btn-info btn-sm" %>
                     <div class="like-btn" v-on:click="onLikeBtnClicked(<%= book_search_result[:id] %>)">
-                      <a class="btn btn-app">
-                        <span class="badge bg-blue"><%= book_search_result[:likes] || 0 %></span>
-                        <i class="fa fa-heart-o"></i> Likes
-                      </a>
+                      <button type="button" class="btn btn-default btn-sm">
+                        <i class="fa fa-thumbs-o-up"></i>Like&nbsp;<span class="badge bg-aqua"><%= book_search_result[:likes] || 0 %></span>
+                      </button>
                     </div>
                   <% else %>
                     <div class="message text-center">
                       <label class="font-bold">貸出中</label>
                       <div class="like-btn" v-on:click="onLikeBtnClicked(<%= book_search_result[:id] %>)">
-                        <a class="btn btn-app">
-                          <span class="badge bg-blue"><%= book_search_result[:likes] || 0 %></span>
-                          <i class="fa fa-heart-o"></i> Likes
-                        </a>
+                        <button type="button" class="btn btn-default btn-sm">
+                          <i class="fa fa-thumbs-o-up"></i>Like&nbsp;<span class="badge bg-aqua"><%= book_search_result[:likes] || 0 %></span>
+                        </button>
                       </div>
                     </div>
                   <% end %>

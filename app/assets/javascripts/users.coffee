@@ -47,7 +47,7 @@ class @UsersController
             if type.value == authority_type_value
               return type.id
 
-        onAuthorityTypeSelectChenged: ->
+        onAuthorityTypeSelectChanged: ->
           this.modaldata.authority_type.value = this.getAuthorityType(this.modaldata.authority_type.id)
 
         onUserNewClicked: ->

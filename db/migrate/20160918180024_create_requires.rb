@@ -12,5 +12,6 @@ class CreateRequires < ActiveRecord::Migration
       t.datetime  :deleted_at
       t.timestamps null: false
     end
+    add_index :requires, [:user_id, :asin], unique: true
   end
 end
